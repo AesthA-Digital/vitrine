@@ -35,7 +35,7 @@ export const About: React.FC = () => {
           }`}
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
               About Me
             </h2>
             <p className="text-xl text-gray-light max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ export const About: React.FC = () => {
             {/* Content */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-silver mb-4">
                   Hello, I'm Antoine Hoareau 👋
                 </h3>
                 <p className="text-gray-light leading-relaxed mb-6">
@@ -70,25 +70,25 @@ export const About: React.FC = () => {
 
               {/* Values */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm">
-                  <Award className="w-8 h-8 text-blue mx-auto mb-3" />
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
+                  <Award className="w-8 h-8 text-violet mx-auto mb-3" />
+                  <h4 className="font-semibold text-silver mb-2">
                     Reliability
                   </h4>
                   <p className="text-sm text-gray-light">
                     On-time delivery and quality code
                   </p>
                 </div>
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm">
-                  <GraduationCap className="w-8 h-8 text-green mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-2">Innovation</h4>
+                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
+                  <GraduationCap className="w-8 h-8 text-lavender mx-auto mb-3" />
+                  <h4 className="font-semibold text-silver mb-2">Innovation</h4>
                   <p className="text-sm text-gray-light">
                     Modern solutions and best practices
                   </p>
                 </div>
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm">
+                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
                   <Users className="w-8 h-8 text-violet mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-2">
+                  <h4 className="font-semibold text-silver mb-2">
                     Client Proximity
                   </h4>
                   <p className="text-sm text-gray-light">
@@ -101,15 +101,15 @@ export const About: React.FC = () => {
             {/* Image/Avatar placeholder */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <div className=" p-[8px] rounded-2xl bg-gradient-to-r from-green to-blue shadow-xl flex items-center justify-center">
+                <div className=" p-[8px] rounded-2xl bg-gradient-to-r from-violet to-lavender shadow-xl flex items-center justify-center">
                   <div className="w-72 h-72 bg-gray-dark rounded-xl flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-gradient-blue-violet rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-white text-3xl font-bold">
+                      <div className="w-24 h-24 bg-gradient-violet-lavender rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span className="text-silver text-3xl font-bold">
                           AH
                         </span>
                       </div>
-                      <p className="text-white font-semibold">
+                      <p className="text-silver font-semibold">
                         Antoine Hoareau
                       </p>
                       <p className="text-gray-light text-sm">

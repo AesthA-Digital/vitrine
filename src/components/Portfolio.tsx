@@ -58,12 +58,12 @@ export const Portfolio: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" ref={sectionRef} className="py-20 bg-gray-900">
+    <section id="portfolio" ref={sectionRef} className="py-20 bg-black">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
               Featured Projects
             </h2>
             <p className="text-xl text-gray-light max-w-2xl mx-auto">
@@ -95,10 +95,10 @@ export const Portfolio: React.FC = () => {
 
                 {/* Project content */}
                 <div className="p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-semibold text-silver mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-light mb-6 leading-relaxed">
                     {project.description}
                   </p>
 
@@ -107,7 +107,7 @@ export const Portfolio: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-gradient-blue-violet text-white rounded-full text-sm font-medium"
+                        className="px-3 py-1 bg-gradient-violet-lavender text-white rounded-full text-sm font-medium"
                       >
                         {tech}
                       </span>
@@ -116,11 +116,11 @@ export const Portfolio: React.FC = () => {
 
                   {/* Action buttons */}
                   <div className="flex space-x-4">
-                    <button className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue transition-colors">
+                    <button className="flex items-center space-x-2 text-gray-light hover:text-violet transition-colors">
                       <ExternalLink className="w-4 h-4" />
                       <span className="text-sm font-medium">View Project</span>
                     </button>
-                    <button className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue transition-colors">
+                    <button className="flex items-center space-x-2 text-gray-light hover:text-violet transition-colors">
                       <Github className="w-4 h-4" />
                       <span className="text-sm font-medium">Source Code</span>
                     </button>
@@ -144,7 +144,7 @@ export const Portfolio: React.FC = () => {
                   const element = document.getElementById('contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-gradient-blue-violet text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-gradient-violet-lavender text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity"
               >
                 Get In Touch
               </button>

@@ -46,14 +46,14 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-50  dark:bg-gray-900">
+    <section id="contact" ref={sectionRef} className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Let's Discuss Your Project 🚀
+            <h2 className="text-3xl md:text-4xl font-bold text-silver mb-4">
+              Let's Discuss Your Project
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-light max-w-2xl mx-auto">
               Ready to bring your ideas to life? Get in touch and let's create something amazing together.
             </p>
           </div>
@@ -62,12 +62,12 @@ export const Contact: React.FC = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                <h3 className="text-2xl font-bold text-silver mb-6">
                   Get In Touch
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  I'm always excited to discuss new projects and opportunities. Whether you need a 
-                  custom web application, mobile app, or ongoing development support, I'm here to help 
+                <p className="text-gray-light leading-relaxed mb-8">
+                  I'm always excited to discuss new projects and opportunities. Whether you need a
+                  custom web application, mobile app, or ongoing development support, I'm here to help
                   turn your vision into reality.
                 </p>
               </div>
@@ -76,32 +76,32 @@ export const Contact: React.FC = () => {
               <div className="space-y-6">
                 <a
                   href="mailto:aestha.digital@gmail.com"
-                  className="flex items-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 group"
+                  className="flex items-center p-6 bg-gray-dark border border-gray-dark/60 rounded-2xl hover:border-violet/40 transition-all duration-200 group"
                 >
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors duration-200">
-                    <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-200" />
+                  <div className="w-12 h-12 bg-violet/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-violet transition-colors duration-200">
+                    <Mail className="w-6 h-6 text-violet group-hover:text-white transition-colors duration-200" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Email Me</h4>
-                    <p className="text-blue-600 dark:text-blue-400">aestha.digital@gmail.com</p>
+                    <h4 className="font-semibold text-silver">Email Me</h4>
+                    <p className="text-violet">aestha.digital@gmail.com</p>
                   </div>
                 </a>
 
-                <div className="flex items-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mr-4">
-                    <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+                <div className="flex items-center p-6 bg-gray-dark border border-gray-dark/60 rounded-2xl">
+                  <div className="w-12 h-12 bg-lavender/20 rounded-xl flex items-center justify-center mr-4">
+                    <MessageCircle className="w-6 h-6 text-lavender" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Response Time</h4>
-                    <p className="text-gray-600 dark:text-gray-400">Usually within 24 hours</p>
+                    <h4 className="font-semibold text-silver">Response Time</h4>
+                    <p className="text-gray-light">Usually within 24 hours</p>
                   </div>
                 </div>
               </div>
 
               {/* Additional info */}
-              <div className="bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-6 text-white">
+              <div className="bg-gradient-violet-lavender rounded-2xl p-6 text-white">
                 <h4 className="font-semibold mb-2">What happens next?</h4>
-                <ul className="text-sm text-blue-100 space-y-1">
+                <ul className="text-sm text-silver/80 space-y-1">
                   <li>• I'll review your project requirements</li>
                   <li>• Schedule a free consultation call</li>
                   <li>• Provide detailed proposal and timeline</li>
@@ -111,11 +111,11 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-8">
+            <div className="bg-gray-dark border border-gray-dark/60 rounded-2xl p-8">
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-silver mb-2">
                       Your Name
                     </label>
                     <input
@@ -125,13 +125,13 @@ export const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
+                      className="w-full px-4 py-3 border border-gray-dark/60 rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent bg-black text-silver transition-colors placeholder:text-gray-light/50"
                       placeholder="Enter your name"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-silver mb-2">
                       Email Address
                     </label>
                     <input
@@ -141,13 +141,13 @@ export const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
+                      className="w-full px-4 py-3 border border-gray-dark/60 rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent bg-black text-silver transition-colors placeholder:text-gray-light/50"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-silver mb-2">
                       Project Details
                     </label>
                     <textarea
@@ -157,14 +157,14 @@ export const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-gray-dark/60 rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent bg-black text-silver transition-colors resize-none placeholder:text-gray-light/50"
                       placeholder="Tell me about your project, requirements, timeline, and any specific questions you have..."
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    className="w-full bg-gradient-violet-lavender text-white py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:opacity-90 transform hover:-translate-y-1"
                   >
                     <Send className="w-5 h-5" />
                     <span>Send Message</span>
@@ -172,11 +172,11 @@ export const Contact: React.FC = () => {
                 </form>
               ) : (
                 <div className="text-center py-8">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  <CheckCircle className="w-16 h-16 text-violet mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-silver mb-2">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-light">
                     Thank you for reaching out. I'll get back to you within 24 hours.
                   </p>
                 </div>

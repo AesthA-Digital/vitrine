@@ -55,39 +55,39 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gray-800/50">
+    <section ref={sectionRef} className="py-20 bg-gray-dark">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-light">
+            <p className="text-xl text-gray-light">
               Common questions about working together and project processes
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
+              <div key={index} className="bg-black/40 border border-gray-dark/60 rounded-2xl overflow-hidden">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-violet/5 transition-colors duration-200"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white pr-8">
+                  <h3 className="text-lg font-semibold text-silver pr-8">
                     {faq.question}
                   </h3>
-                  <ChevronDown 
-                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform duration-200 flex-shrink-0 ${
+                  <ChevronDown
+                    className={`w-5 h-5 text-gray-light transition-transform duration-200 flex-shrink-0 ${
                       openIndex === index ? 'rotate-180' : ''
-                    }`} 
+                    }`}
                   />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                   <div className="px-8 pb-6">
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-gray-light leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -98,11 +98,11 @@ export const FAQ: React.FC = () => {
 
           {/* Contact CTA */}
           <div className="text-center mt-16">
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            <div className="bg-violet/10 border border-violet/20 rounded-2xl p-8">
+              <h3 className="text-xl font-semibold text-silver mb-4">
                 Still have questions?
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+              <p className="text-gray-light mb-6">
                 I'm here to help! Feel free to reach out for any specific questions about your project.
               </p>
               <button
@@ -110,7 +110,7 @@ export const FAQ: React.FC = () => {
                   const element = document.getElementById('contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors"
+                className="bg-gradient-violet-lavender text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity"
               >
                 Ask Your Question
               </button>

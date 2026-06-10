@@ -33,18 +33,18 @@ export const Hero: React.FC = () => {
         >
           {/* Icons */}
           <div className="flex justify-center space-x-6 mb-8">
-            <div className="p-4 bg-blue-900/30 rounded-2xl">
-              <Code className="w-8 h-8 text-blue" />
+            <div className="p-4 bg-violet/20 rounded-2xl">
+              <Code className="w-8 h-8 text-violet" />
             </div>
-            <div className="p-4 bg-green-900/30 rounded-2xl">
-              <Smartphone className="w-8 h-8 text-green" />
+            <div className="p-4 bg-lavender/20 rounded-2xl">
+              <Smartphone className="w-8 h-8 text-lavender" />
             </div>
           </div>
 
           {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-silver mb-6">
             <span className="block">Full-Stack &</span>
-            <span className="block bg-gradient-green-blue bg-clip-text text-transparent">
+            <span className="block bg-gradient-violet-lavender bg-clip-text text-transparent">
               Mobile Developer
             </span>
             <span className="block text-2xl md:text-3xl lg:text-4xl font-normal text-gray-light mt-2">
@@ -53,7 +53,7 @@ export const Hero: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-light mb-8 max-w-3xl mx-auto leading-relaxed">
             I design and develop custom web & mobile applications enhanced with
             AI automation, helping startups and SMEs automate their business,
             save hundreds of hours, and scale faster.
@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-20">
             <button
               onClick={scrollToContact}
-              className="group bg-gradient-blue-violet text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="group bg-gradient-violet-lavender text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <span>Work with me</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

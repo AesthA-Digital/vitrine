@@ -4,32 +4,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 🌑 Base
-        black: "#000000",
+        // Base
+        black: "#0A0A0D",
         white: "#FFFFFF",
 
-        // ⚪ Neutres
+        // Neutrals
         gray: {
-          light: "#B0B0B0",   // texte secondaire
-          dark: "#1A1A1A",    // background secondaire (cartes/sections)
+          light: "#8A8F9A",   // secondary text
+          dark: "#14161C",    // cards / sections (Charcoal Graphite)
         },
 
-        // 🎯 Accents
+        // Accents
         violet: {
-          DEFAULT: "#6C2FF9", // violet néon
+          DEFAULT: "#782CFF", // Electric Violet
         },
-        blue: {
-          DEFAULT: "#1E90FF", // bleu électrique
+        lavender: {
+          DEFAULT: "#B18CFF", // Crystal Lavender
         },
-        green: {
-          DEFAULT: "#00C896", // vert émeraude
+        silver: {
+          DEFAULT: "#DDE1E6", // Metallic Silver (primary text)
         },
       },
 
       backgroundImage: {
-        // 🌌 Dégradés
-        "gradient-blue-violet": "linear-gradient(135deg, #1E90FF 0%, #6C2FF9 100%)",
-        "gradient-green-blue": "linear-gradient(135deg, #00C896 0%, #1E90FF 100%)",
+        "gradient-violet-lavender": "linear-gradient(135deg, #782CFF 0%, #B18CFF 100%)",
+        "gradient-lavender-violet": "linear-gradient(135deg, #B18CFF 0%, #782CFF 100%)",
       },
     },
   },

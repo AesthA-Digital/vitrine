@@ -75,12 +75,12 @@ export const Pricing: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" ref={sectionRef} className="py-20  dark:bg-gray-900">
+    <section id="pricing" ref={sectionRef} className="py-20 bg-black">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
               Pricing & Collaboration Models
             </h2>
             <p className="text-xl text-gray-light max-w-2xl mx-auto">
@@ -92,13 +92,13 @@ export const Pricing: React.FC = () => {
             {pricingPlans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white dark:bg-gray-dark rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 ${
-                  plan.popular ? 'ring-2 ring-green-500 scale-105' : ''
+                className={`relative bg-gray-dark rounded-2xl p-8 hover:shadow-lg hover:shadow-violet/10 transition-all duration-300 border border-gray-dark/60 ${
+                  plan.popular ? 'ring-2 ring-violet scale-105' : ''
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-gradient-violet-lavender text-white px-4 py-1 rounded-full text-sm font-semibold">
                       Most Popular
                     </span>
                   </div>
@@ -106,28 +106,28 @@ export const Pricing: React.FC = () => {
 
                 <div className="text-center mb-8">
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center ${
-                    plan.color === 'blue' ? 'bg-blue-100 dark:bg-blue-900/30' :
-                    plan.color === 'green' ? 'bg-green-100 dark:bg-green-900/30' :
-                    'bg-purple-100 dark:bg-purple-900/30'
+                    plan.color === 'blue' ? 'bg-violet/20' :
+                    plan.color === 'green' ? 'bg-lavender/20' :
+                    'bg-violet/10'
                   }`}>
                     <plan.icon className={`w-8 h-8 ${
-                      plan.color === 'blue' ? 'text-blue-600 dark:text-blue-400' :
-                      plan.color === 'green' ? 'text-green-600 dark:text-green-400' :
-                      'text-purple-600 dark:text-purple-400'
+                      plan.color === 'blue' ? 'text-violet' :
+                      plan.color === 'green' ? 'text-lavender' :
+                      'text-lavender'
                     }`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold text-silver mb-2">
                     {plan.name}
                   </h3>
                   <div className="mb-4">
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <span className="text-3xl font-bold text-silver">
                       {plan.price}
                     </span>
-                    <span className="text-gray-600 dark:text-gray-light ml-2">
+                    <span className="text-gray-light ml-2">
                       {plan.period}
                     </span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-light text-sm">
+                  <p className="text-gray-light text-sm">
                     {plan.description}
                   </p>
                 </div>
@@ -135,8 +135,8 @@ export const Pricing: React.FC = () => {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-600 dark:text-gray-light text-sm">
+                      <Check className="w-5 h-5 text-violet mr-3 flex-shrink-0" />
+                      <span className="text-gray-light text-sm">
                         {feature}
                       </span>
                     </li>
@@ -150,8 +150,8 @@ export const Pricing: React.FC = () => {
                   }}
                   className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-200 ${
                     plan.popular
-                      ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white'
+                      ? 'bg-gradient-violet-lavender text-white shadow-lg hover:opacity-90'
+                      : 'bg-black/40 border border-gray-dark hover:bg-violet/10 text-silver'
                   }`}
                 >
                   Get Started
@@ -162,12 +162,12 @@ export const Pricing: React.FC = () => {
 
           {/* Additional info */}
           <div className="mt-16 text-center">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+            <div className="bg-gray-dark rounded-2xl p-8 border border-gray-dark/60">
+              <h3 className="text-2xl font-semibold text-silver mb-4">
                 Custom Solutions Available
               </h3>
               <p className="text-gray-light max-w-3xl mx-auto">
-                Every project is unique. I'm happy to discuss custom pricing and engagement models 
+                Every project is unique. I'm happy to discuss custom pricing and engagement models
                 that perfectly fit your specific requirements, timeline, and budget constraints.
               </p>
             </div>
