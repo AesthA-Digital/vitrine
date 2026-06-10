@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  --color-gray-light: #B0B0B0;   /* texte secondaire */
+  --color-gray-dark: #1A1A1A;    /* background secondaire */
+
+  --color-violet: #6C2FF9;       /* violet néon */
+  --color-blue: #1E90FF;         /* bleu électrique */
+  --color-green: #00C896;  
+  
+  --background-gradient-blue-violet: linear-gradient(135deg, #1E90FF 0%, #6C2FF9 100%);
+  --background-gradient-green-blue: linear-gradient(135deg, #00C896 0%, #1E90FF 100%);/* vert émeraude */
+
+}
+
+@layer utilities {
+  .bg-gradient-blue-violet {
+    background-image: linear-gradient(135deg, #1E90FF 0%, #6C2FF9 100%);
+  }
+
+  .hover\:bg-gradient-blue-violet:hover {
+    background-image: linear-gradient(135deg, #1E90FF 0%, #6C2FF9 100%);
+  }
+
+  .bg-gradient-green-blue {
+    background-image: linear-gradient(135deg, #00C896 0%, #1E90FF 100%);
+  }
+
+  .hover\:bg-gradient-green-blue:hover {
+    background-image: linear-gradient(135deg, #00C896 0%, #1E90FF 100%);
+  }
+}
+

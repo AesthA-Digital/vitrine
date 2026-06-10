@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="/src/index.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antoine Hoareau - Full-Stack & Mobile Freelance Developer</title>
+    <meta name="description" content="Full-Stack & Mobile Developer Freelance specialized in React, Flutter, and modern web solutions. EPITECH graduate helping startups and SMEs build custom applications." />
+    <meta name="keywords" content="freelance developer, full-stack developer, mobile developer, React, Flutter, web development, mobile app development, Antoine Hoareau" />
+    <meta name="author" content="Antoine Hoareau" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://antoine-hoareau.dev/" />
+    <meta property="og:title" content="Antoine Hoareau - Full-Stack & Mobile Freelance Developer" />
+    <meta property="og:description" content="Full-Stack & Mobile Developer Freelance specialized in React, Flutter, and modern web solutions." />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://antoine-hoareau.dev/" />
+    <meta property="twitter:title" content="Antoine Hoareau - Full-Stack & Mobile Freelance Developer" />
+    <meta property="twitter:description" content="Full-Stack & Mobile Developer Freelance specialized in React, Flutter, and modern web solutions." />
+    
+    <script>
+      // Prevent flash of unstyled content for dark mode
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
