@@ -8,165 +8,213 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  // Frontend
-  { name: 'HTML/CSS', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', description: 'Semantic markup & responsive styling' },
-  { name: 'Tailwind CSS', category: 'Frontend', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg', description: 'Utility-first CSS framework' },
-  { name: 'React', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', description: 'Component-based UI development' },
-  { name: 'TypeScript', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', description: 'Type-safe JavaScript development' },
-  { name: 'JavaScript', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', description: 'Modern ES6+ development' },
-  { name: 'Angular', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg', description: 'Enterprise web applications' },
-  
-  // Mobile
-  { name: 'React Native', category: 'Mobile', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', description: 'Cross-platform mobile apps' },
-  { name: 'Flutter', category: 'Mobile', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg', description: 'Beautiful native applications' },
-  { name: 'Dart', category: 'Mobile', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg', description: 'Flutter development language' },
-  
-  // Backend
-  { name: 'Next.js', category: 'Backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', description: 'Full-stack React framework' },
-  { name: 'Node.js', category: 'Backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', description: 'JavaScript runtime environment' },
-  { name: 'PHP', category: 'Backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg', description: 'Server-side web development' },
-  { name: 'Symfony', category: 'Backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg', description: 'PHP web application framework' },
-  
-  // Database
-  { name: 'MySQL', category: 'Database', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', description: 'Relational database management' },
-  
-  // DevOps
-  { name: 'Docker', category: 'DevOps', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', description: 'Containerization & deployment' },
-  { name: 'Git CI/CD', category: 'DevOps', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', description: 'Version control & automation' },
+  { name: 'HTML/CSS',     category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',       description: 'Semantic markup & responsive styling' },
+  { name: 'Tailwind CSS', category: 'Frontend', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',            description: 'Utility-first CSS framework' },
+  { name: 'React',        category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',          description: 'Component-based UI development' },
+  { name: 'TypeScript',   category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', description: 'Type-safe JavaScript development' },
+  { name: 'JavaScript',   category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', description: 'Modern ES6+ development' },
+  { name: 'Angular',      category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',   description: 'Enterprise web applications' },
+  { name: 'React Native', category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',          description: 'Cross-platform mobile apps' },
+  { name: 'Flutter',      category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',      description: 'Beautiful native applications' },
+  { name: 'Dart',         category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',            description: 'Flutter development language' },
+  { name: 'Next.js',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',        description: 'Full-stack React framework' },
+  { name: 'Node.js',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',        description: 'JavaScript runtime environment' },
+  { name: 'PHP',          category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',              description: 'Server-side web development' },
+  { name: 'Symfony',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',      description: 'PHP web application framework' },
+  { name: 'MySQL',        category: 'Database', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',          description: 'Relational database management' },
+  { name: 'Docker',       category: 'DevOps',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',        description: 'Containerization & deployment' },
+  { name: 'Git CI/CD',    category: 'DevOps',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',              description: 'Version control & automation' },
 ];
 
 const categories = ['All', 'Frontend', 'Mobile', 'Backend', 'Database', 'DevOps'];
 
 export default function SkillsSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [, setHoveredSkill] = useState<string | null>(null);
 
-  const filteredSkills = selectedCategory === 'All' 
-    ? skills 
-    : skills.filter(skill => skill.category === selectedCategory);
+  const filteredSkills = selectedCategory === 'All'
+    ? skills
+    : skills.filter(s => s.category === selectedCategory);
 
   return (
-    <section className="py-20 bg-gray-dark">
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ background: '#14161C' }}
+    >
+      {/* Top edge */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.4), rgba(177,140,255,0.4), transparent)' }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
-            Technical Skills
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid opacity-25" />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, #14161C 100%)' }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Label */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
+          <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
+            Stack
+          </span>
+        </div>
+
+        <div className="mb-12">
+          <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
+            TECHNICAL SKILLS
           </h2>
-          <p className="text-xl text-gray-light max-w-3xl mx-auto">
-            Crafting digital experiences with cutting-edge technologies and modern development practices
+          <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+            Cutting-edge technologies and modern development practices
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
+        {/* Filter */}
+        <div className="flex flex-wrap gap-3 mb-12">
+          {categories.map(cat => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 transform hover:scale-105 ${
-                selectedCategory === category
-                  ? 'bg-gradient-violet-lavender text-white shadow-lg shadow-violet/30'
-                  : 'bg-black/40 text-gray-light hover:bg-violet/10 hover:text-silver border border-gray-dark/60'
-              }`}
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className="font-orbitron text-xs font-bold tracking-wider px-5 py-2.5 rounded-full transition-all duration-300"
+              style={
+                selectedCategory === cat
+                  ? {
+                      background: 'linear-gradient(135deg, #782CFF, #B18CFF)',
+                      color: '#fff',
+                      boxShadow: '0 0 18px rgba(120,44,255,0.4)',
+                    }
+                  : {
+                      background: 'rgba(120,44,255,0.06)',
+                      color: '#8A8F9A',
+                      border: '1px solid rgba(120,44,255,0.2)',
+                    }
+              }
+              onMouseEnter={e => {
+                if (selectedCategory !== cat) {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.5)';
+                  (e.currentTarget as HTMLElement).style.color = '#DDE1E6';
+                }
+              }}
+              onMouseLeave={e => {
+                if (selectedCategory !== cat) {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.2)';
+                  (e.currentTarget as HTMLElement).style.color = '#8A8F9A';
+                }
+              }}
             >
-              {category}
+              {cat}
             </button>
           ))}
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredSkills.map((skill, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+          {filteredSkills.map((skill, i) => (
             <div
               key={skill.name}
-              className="group relative overflow-hidden rounded-2xl p-[2px] bg-gradient-violet-lavender shadow-xl transition-all duration-500 hover:scale-105 hover:rotate-1"
-              style={{ animationDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setHoveredSkill(skill.name)}
-              onMouseLeave={() => setHoveredSkill(null)}
+              className="group relative overflow-hidden rounded-xl p-5 text-center transition-all duration-300"
+              style={{
+                background: '#0A0A0D',
+                border: '1px solid rgba(120,44,255,0.15)',
+                animationDelay: `${i * 0.05}s`,
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = 'rgba(120,44,255,0.5)';
+                el.style.boxShadow = '0 0 25px rgba(120,44,255,0.15)';
+                el.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = 'rgba(120,44,255,0.15)';
+                el.style.boxShadow = 'none';
+                el.style.transform = 'translateY(0)';
+              }}
             >
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              {/* Sweep shimmer */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, transparent 0%, rgba(120,44,255,0.08) 50%, transparent 100%)',
+                }}
+              />
 
-              {/* Card Content */}
-              <div className="relative bg-gray-dark rounded-2xl p-6 h-full">
-                {/* Icon */}
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-black/60 mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <img
-                    src={skill.logo}
-                    alt={skill.name}
-                    className="w-8 h-8"
-                  />
-                </div>
-
-                {/* Skill Name */}
-                <h3 className="text-xl font-bold text-silver mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet group-hover:to-lavender transition-all duration-300">
-                  {skill.name}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-light text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {skill.description}
-                </p>
-
-                {/* Floating particles effect */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-2 h-2 bg-violet rounded-full animate-ping"></div>
-                </div>
-                <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  <div className="w-1 h-1 bg-lavender rounded-full animate-ping"></div>
-                </div>
-                <div className="absolute bottom-8 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                  <div className="w-1.5 h-1.5 bg-lavender rounded-full animate-ping"></div>
-                </div>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110"
+                style={{
+                  background: 'rgba(120,44,255,0.08)',
+                  border: '1px solid rgba(120,44,255,0.18)',
+                }}
+              >
+                <img src={skill.logo} alt={skill.name} className="w-7 h-7" />
               </div>
+
+              <h3
+                className="font-orbitron text-xs font-bold tracking-wide mb-1 transition-colors duration-300"
+                style={{ color: '#DDE1E6' }}
+              >
+                {skill.name}
+              </h3>
+
+              <p
+                className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {skill.description}
+              </p>
+
+              {/* Pulse dot on hover */}
+              <div
+                className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"
+                style={{ background: '#782CFF' }}
+              />
             </div>
           ))}
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="group">
-            <div className="text-3xl font-bold text-silver mb-2 group-hover:text-violet transition-colors">
-              {skills.length}+
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { value: `${skills.length}+`, label: 'Technologies' },
+            { value: '5+',   label: 'Categories' },
+            { value: '24/7', label: 'Learning' },
+            { value: '5+',   label: 'Years Experience' },
+          ].map(stat => (
+            <div
+              key={stat.label}
+              className="text-center p-6 rounded-xl transition-all duration-300"
+              style={{
+                background: '#0A0A0D',
+                border: '1px solid rgba(120,44,255,0.12)',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.4)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(120,44,255,0.1)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.12)';
+                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+              }}
+            >
+              <div className="font-orbitron text-3xl font-black mb-2" style={{ color: '#782CFF' }}>
+                {stat.value}
+              </div>
+              <div className="font-mono-brand text-xs tracking-widest uppercase" style={{ color: '#8A8F9A' }}>
+                {stat.label}
+              </div>
             </div>
-            <div className="text-gray-light text-sm">Technologies</div>
-          </div>
-          <div className="group">
-            <div className="text-3xl font-bold text-silver mb-2 group-hover:text-lavender transition-colors">
-              5+
-            </div>
-            <div className="text-gray-light text-sm">Categories</div>
-          </div>
-          <div className="group">
-            <div className="text-3xl font-bold text-silver mb-2 group-hover:text-lavender transition-colors">
-              24/7
-            </div>
-            <div className="text-gray-light text-sm">Learning</div>
-          </div>
-          <div className="group">
-            <div className="text-3xl font-bold text-silver mb-2 group-hover:text-violet transition-colors">
-              5+
-            </div>
-            <div className="text-gray-light text-sm">Years Experience</div>
-          </div>
-        </div>
-
-        {/* Additional info */}
-        <div className="mt-16 text-center">
-          <div className="bg-black/40 rounded-2xl p-8 border border-gray-dark/60">
-            <h3 className="text-2xl font-semibold text-silver mb-4">
-              Always Learning & Adapting
-            </h3>
-            <p className="text-gray-light max-w-3xl mx-auto">
-              Technology evolves rapidly, and so do I. I continuously update
-              my skills and explore new tools to ensure your projects benefit
-              from the latest innovations and best practices in the industry.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
+
+      {/* Bottom edge */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.3), transparent)' }}
+      />
     </section>
   );
 }

@@ -3,73 +3,95 @@ import { Github, Linkedin, ExternalLink } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <footer className="bg-gray-dark text-silver">
+    <footer style={{ background: '#0A0A0D', borderTop: '1px solid rgba(120,44,255,0.12)' }}>
+      {/* Top glow line */}
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.5), rgba(177,140,255,0.5), transparent)' }} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+
           {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 text-silver">AesthA Digital</h3>
-            <p className="text-gray-light mb-6 max-w-md leading-relaxed">
-              Full-Stack & Mobile Freelance Developer specializing in modern web and mobile applications.
-              EPITECH graduate with a passion for creating innovative digital solutions.
+          <div className="md:col-span-2 space-y-6">
+            <div className="flex items-center gap-3">
+              <svg width="22" height="26" viewBox="0 0 200 220" fill="none">
+                <polygon points="100,8 192,180 8,180" fill="none" stroke="rgba(120,44,255,0.8)" strokeWidth="8" />
+                <polygon points="100,50 130,120 70,120" fill="rgba(120,44,255,0.5)" />
+                <circle cx="100" cy="88" r="10" fill="#782CFF" />
+                <circle cx="100" cy="88" r="5" fill="#DDE1E6" />
+              </svg>
+              <h3 className="font-orbitron text-xl font-bold" style={{ color: '#DDE1E6' }}>
+                OBSIDIAN<span style={{ color: '#782CFF' }}> STUDIO</span>
+              </h3>
+            </div>
+
+            <p className="leading-relaxed max-w-sm" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+              Premium web and application development studio. We build powerful, high-performance
+              digital experiences that help businesses grow, operate smarter, and stand out.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://linkedin.com/in/antoine-hoareau"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-black/40 hover:bg-violet/20 hover:text-violet rounded-lg transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://github.com/antoine-hoareau"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-black/40 hover:bg-violet/20 hover:text-violet rounded-lg transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://malt.fr/profile/antoinehoareau"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-black/40 hover:bg-violet/20 hover:text-violet rounded-lg transition-colors"
-                aria-label="Malt"
-              >
-                <ExternalLink className="w-5 h-5" />
-              </a>
+
+            <p className="font-mono-brand text-xs tracking-widest" style={{ color: 'rgba(120,44,255,0.7)' }}>
+              BUILT IN OBSIDIAN. DESIGNED TO PERFORM.
+            </p>
+
+            <div className="flex gap-3">
+              {[
+                { href: 'https://linkedin.com/in/antoine-hoareau', icon: Linkedin, label: 'LinkedIn' },
+                { href: 'https://github.com/antoine-hoareau', icon: Github, label: 'GitHub' },
+                { href: 'https://malt.fr/profile/antoinehoareau', icon: ExternalLink, label: 'Malt' },
+              ].map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg transition-all duration-300"
+                  style={{
+                    background: 'rgba(120,44,255,0.08)',
+                    color: '#8A8F9A',
+                    border: '1px solid rgba(120,44,255,0.15)',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(120,44,255,0.2)';
+                    (e.currentTarget as HTMLElement).style.color = '#782CFF';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.4)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 15px rgba(120,44,255,0.3)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(120,44,255,0.08)';
+                    (e.currentTarget as HTMLElement).style.color = '#8A8F9A';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.15)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                  }}
+                  aria-label={label}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-silver">Quick Links</h4>
-            <ul className="space-y-2">
-              {[
-                { label: 'About', id: 'about' },
-                { label: 'Services', id: 'services' },
-                { label: 'Portfolio', id: 'portfolio' },
-                { label: 'Pricing', id: 'pricing' },
-                { label: 'Contact', id: 'contact' }
-              ].map((link) => (
-                <li key={link.id}>
+            <h4
+              className="font-orbitron text-xs font-bold tracking-[0.2em] uppercase mb-6"
+              style={{ color: '#782CFF' }}
+            >
+              Navigation
+            </h4>
+            <ul className="space-y-3">
+              {['About', 'Services', 'Portfolio', 'Pricing', 'Contact'].map(link => (
+                <li key={link}>
                   <button
-                    onClick={() => scrollToSection(link.id)}
-                    className="text-gray-light hover:text-lavender transition-colors"
+                    onClick={() => scrollTo(link.toLowerCase())}
+                    className="text-sm transition-colors duration-200"
+                    style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#B18CFF'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8A8F9A'}
                   >
-                    {link.label}
+                    {link}
                   </button>
                 </li>
               ))}
@@ -78,30 +100,46 @@ export const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4 text-silver">Services</h4>
-            <ul className="space-y-2 text-gray-light">
-              <li>Web Development</li>
-              <li>Mobile Apps</li>
-              <li>API Development</li>
-              <li>Performance & SEO</li>
-              <li>Maintenance</li>
-              <li>DevOps & CI/CD</li>
+            <h4
+              className="font-orbitron text-xs font-bold tracking-[0.2em] uppercase mb-6"
+              style={{ color: '#782CFF' }}
+            >
+              Services
+            </h4>
+            <ul className="space-y-3">
+              {['Web Development', 'Mobile Apps', 'API & Backend', 'Performance & SEO', 'Maintenance', 'DevOps & CI/CD'].map(s => (
+                <li
+                  key={s}
+                  className="text-sm"
+                  style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  {s}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-gray-dark/50 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-gray-light text-sm">
-            © {currentYear} AesthA Digital - Full-Stack & Mobile Freelance Developer
+        {/* Bottom bar */}
+        <div
+          className="mt-14 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
+          style={{ borderTop: '1px solid rgba(120,44,255,0.1)' }}
+        >
+          <p className="font-mono-brand text-xs" style={{ color: '#8A8F9A' }}>
+            © {currentYear} Obsidian Studio — Premium Development. Powerful Results.
           </p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <button className="text-gray-light hover:text-silver text-sm transition-colors">
-              Legal Mentions
-            </button>
-            <button className="text-gray-light hover:text-silver text-sm transition-colors">
-              Privacy Policy
-            </button>
+          <div className="flex gap-6">
+            {['Legal Mentions', 'Privacy Policy'].map(label => (
+              <button
+                key={label}
+                className="font-mono-brand text-xs transition-colors"
+                style={{ color: '#8A8F9A' }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#DDE1E6'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8A8F9A'}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

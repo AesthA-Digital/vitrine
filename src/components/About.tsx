@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { GraduationCap, Award, Users } from "lucide-react";
+import { Shield, Zap, Users } from "lucide-react";
+
+const values = [
+  { icon: Shield, label: "Reliability", sub: "On-time delivery & quality code", color: '#782CFF' },
+  { icon: Zap,    label: "Performance", sub: "Modern solutions & best practices", color: '#B18CFF' },
+  { icon: Users,  label: "Partnership", sub: "Close collaboration at every step", color: '#782CFF' },
+];
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,18 +13,10 @@ export const About: React.FC = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -26,101 +24,214 @@ export const About: React.FC = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="py-16 w-2/3 mx-auto bg-gray-dark rounded-3xl"
+      className="py-24 relative overflow-hidden"
+      style={{ background: '#0A0A0D' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Grid bg */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid opacity-40" />
         <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 50%, transparent 40%, #0A0A0D 100%)' }}
+        />
+      </div>
+
+      {/* Ambient glow */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.06) 0%, transparent 70%)',
+          top: '50%',
+          right: -120,
+          transform: 'translateY(-50%)',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
+            transition: 'opacity 0.9s ease, transform 0.9s ease',
+          }}
         >
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-silver mb-4">
-              About Me
+          {/* Label */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
+            <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
+              About
+            </span>
+          </div>
+
+          <div className="mb-16">
+            <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
+              WHO WE ARE
             </h2>
-            <p className="text-xl text-gray-light max-w-3xl mx-auto">
-              Full-Stack Developer passionate about creating innovative digital
-              solutions
+            <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+              A premium development studio built on precision, performance, and passion
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Content */}
+            {/* Text */}
             <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold text-silver mb-4">
-                  Hello, I'm Antoine Hoareau 👋
-                </h3>
-                <p className="text-gray-light leading-relaxed mb-6">
-                  EPITECH graduate with over 5 years of experience in full-stack
-                  and mobile development. I specialize in building modern,
-                  high-performance web applications, cross-platform mobile
-                  solutions, and AI-powered automation systems that help
-                  startups and SMEs optimize workflows, improve efficiency, and
-                  scale faster in the digital landscape.
+              <div className="space-y-5">
+                <p className="text-lg leading-relaxed" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Founded by{' '}
+                  <span style={{ color: '#DDE1E6', fontWeight: 600 }}>Antoine Hoareau</span>
+                  , an EPITECH graduate with over 5 years of expertise in full-stack and mobile
+                  development. We specialize in building modern, high-performance web applications,
+                  cross-platform mobile solutions, and AI-powered automation systems.
                 </p>
-                <p className="text-gray-light leading-relaxed">
-                  My approach combines reliable delivery, scalable architecture,
-                  and innovative AI integration to create smart digital
-                  solutions tailored to real business needs while maintaining
-                  close client relationships throughout the entire development
-                  process.
+                <p className="text-lg leading-relaxed" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Our approach combines reliable delivery, scalable architecture, and innovative AI
+                  integration — creating smart digital solutions tailored to real business needs while
+                  maintaining close client relationships throughout the entire development process.
                 </p>
               </div>
 
               {/* Values */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
-                  <Award className="w-8 h-8 text-violet mx-auto mb-3" />
-                  <h4 className="font-semibold text-silver mb-2">
-                    Reliability
-                  </h4>
-                  <p className="text-sm text-gray-light">
-                    On-time delivery and quality code
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
-                  <GraduationCap className="w-8 h-8 text-lavender mx-auto mb-3" />
-                  <h4 className="font-semibold text-silver mb-2">Innovation</h4>
-                  <p className="text-sm text-gray-light">
-                    Modern solutions and best practices
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-black rounded-xl shadow-sm border border-gray-dark">
-                  <Users className="w-8 h-8 text-violet mx-auto mb-3" />
-                  <h4 className="font-semibold text-silver mb-2">
-                    Client Proximity
-                  </h4>
-                  <p className="text-sm text-gray-light">
-                    Close collaboration and communication
-                  </p>
-                </div>
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                {values.map(({ icon: Icon, label, sub, color }) => (
+                  <div
+                    key={label}
+                    className="p-5 rounded-xl text-center transition-all duration-300"
+                    style={{
+                      background: '#14161C',
+                      border: '1px solid rgba(120,44,255,0.15)',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.45)';
+                      (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.15)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.15)';
+                      (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                    }}
+                  >
+                    <Icon className="w-7 h-7 mx-auto mb-3" style={{ color }} />
+                    <h4 className="font-orbitron text-xs font-bold tracking-wider mb-1" style={{ color: '#DDE1E6' }}>
+                      {label}
+                    </h4>
+                    <p className="text-xs" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      {sub}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Image/Avatar placeholder */}
+            {/* Crystal identity card */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <div className=" p-[8px] rounded-2xl bg-gradient-to-r from-violet to-lavender shadow-xl flex items-center justify-center">
-                  <div className="w-72 h-72 bg-gray-dark rounded-xl flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-gradient-violet-lavender rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-silver text-3xl font-bold">
-                          AH
-                        </span>
+                {/* Rotating ring */}
+                <div
+                  className="absolute animate-rotate-slow pointer-events-none"
+                  style={{
+                    width: 360,
+                    height: 360,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    border: '1px solid rgba(120,44,255,0.1)',
+                    borderRadius: '50%',
+                  }}
+                />
+                <div
+                  className="absolute animate-rotate-rev pointer-events-none"
+                  style={{
+                    width: 290,
+                    height: 290,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    border: '1px dashed rgba(177,140,255,0.08)',
+                    borderRadius: '50%',
+                  }}
+                />
+
+                {/* Card */}
+                <div
+                  className="relative w-72 rounded-2xl overflow-hidden"
+                  style={{
+                    background: '#14161C',
+                    border: '1px solid rgba(120,44,255,0.2)',
+                    boxShadow: '0 0 50px rgba(120,44,255,0.1), inset 0 0 30px rgba(120,44,255,0.03)',
+                  }}
+                >
+                  {/* Top gradient bar */}
+                  <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #782CFF, #B18CFF)' }} />
+
+                  <div className="p-8 text-center">
+                    {/* Logo */}
+                    <div className="flex justify-center mb-5">
+                      <div
+                        className="w-24 h-24 rounded-2xl flex items-center justify-center animate-pulse-glow"
+                        style={{
+                          background: 'rgba(120,44,255,0.1)',
+                          border: '1px solid rgba(120,44,255,0.3)',
+                        }}
+                      >
+                        <svg width="50" height="56" viewBox="0 0 200 220" fill="none" className="animate-crystal-pulse">
+                          <polygon points="100,8 192,180 8,180" fill="none" stroke="rgba(120,44,255,0.8)" strokeWidth="8" />
+                          <polygon points="100,50 130,120 70,120" fill="rgba(120,44,255,0.5)" />
+                          <circle cx="100" cy="88" r="14" fill="#782CFF" />
+                          <circle cx="100" cy="88" r="7" fill="#DDE1E6" />
+                        </svg>
                       </div>
-                      <p className="text-silver font-semibold">
-                        Antoine Hoareau
-                      </p>
-                      <p className="text-gray-light text-sm">
-                        Full-Stack Developer
-                      </p>
+                    </div>
+
+                    <p className="font-orbitron text-lg font-bold mb-1" style={{ color: '#DDE1E6' }}>
+                      OBSIDIAN STUDIO
+                    </p>
+                    <p className="font-mono-brand text-xs tracking-widest mb-4" style={{ color: '#782CFF' }}>
+                      Antoine Hoareau
+                    </p>
+                    <p className="text-sm mb-1" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      Full-Stack & Mobile Developer
+                    </p>
+                    <p className="text-xs mb-6" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      EPITECH Graduate · 5+ Years Experience
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {['React', 'Flutter', 'Node.js', 'AI'].map(tag => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 rounded-full font-mono-brand text-xs"
+                          style={{
+                            background: 'rgba(120,44,255,0.12)',
+                            color: '#B18CFF',
+                            border: '1px solid rgba(120,44,255,0.22)',
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-                {/* Decorative elements */}
-                {/*<div className="absolute -top-4 -right-4 w-8 h-8 bg-violet rounded-full animate-bounce"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green rounded-full animate-pulse"></div>*/}
+
+                {/* Floating shards */}
+                <div
+                  className="absolute pointer-events-none animate-float"
+                  style={{ top: -18, right: -22, animationDelay: '1s', animationDuration: '5s' }}
+                >
+                  <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+                    <polygon points="20,2 38,35 2,35" fill="none" stroke="#782CFF" strokeWidth="1.5" opacity="0.5" />
+                  </svg>
+                </div>
+                <div
+                  className="absolute pointer-events-none animate-float"
+                  style={{ bottom: -14, left: -26, animationDelay: '2.2s', animationDuration: '6.5s' }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+                    <polygon points="20,2 38,35 2,35" fill="none" stroke="#B18CFF" strokeWidth="1.5" opacity="0.4" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>

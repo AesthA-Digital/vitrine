@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { Menu, X } from 'lucide-react';
 
 export const Header: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   const navItems = [
@@ -28,74 +21,133 @@ export const Header: React.FC = () => {
     { label: 'Services', id: 'services' },
     { label: 'Portfolio', id: 'portfolio' },
     { label: 'Pricing', id: 'pricing' },
-    { label: 'Contact', id: 'contact' }
+    { label: 'Contact', id: 'contact' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    }`}>
+    <header
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style={{
+        background: isScrolled
+          ? 'rgba(10,10,13,0.92)'
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(120,44,255,0.12)' : 'none',
+        boxShadow: isScrolled ? '0 4px 30px rgba(0,0,0,0.5)' : 'none',
+      }}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <button
-              onClick={() => scrollToSection('hero')}
-              className="text-xl font-bold text-silver hover:text-lavender transition-colors"
+          {/* Logo */}
+          <button
+            onClick={() => scrollToSection('hero')}
+            className="flex items-center gap-3 group"
+          >
+            {/* Crystal mini icon */}
+            <svg width="24" height="28" viewBox="0 0 200 220" fill="none" className="transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(120,44,255,0.8)]">
+              <polygon points="100,8 192,180 8,180" fill="none" stroke="rgba(120,44,255,0.8)" strokeWidth="8" />
+              <polygon points="100,50 130,120 70,120" fill="rgba(120,44,255,0.6)" />
+              <circle cx="100" cy="88" r="10" fill="#782CFF" />
+              <circle cx="100" cy="88" r="5" fill="#DDE1E6" />
+            </svg>
+            <span
+              className="font-orbitron text-base font-bold tracking-wider transition-colors duration-300"
+              style={{ color: '#DDE1E6' }}
             >
-              AesthA Digital
-            </button>
-          </div>
+              OBSIDIAN
+              <span style={{ color: '#782CFF' }}> STUDIO</span>
+            </span>
+          </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-gray-light hover:text-lavender transition-colors duration-200 text-sm font-medium"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-dark text-gray-light hover:bg-gray-dark/80 hover:text-silver transition-colors"
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg bg-gray-dark text-gray-light hover:bg-gray-dark/80 hover:text-silver transition-colors"
-                aria-label="Toggle menu"
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="relative font-space text-sm font-medium tracking-wide transition-colors duration-200 group"
+                style={{ color: '#8A8F9A' }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#DDE1E6'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8A8F9A'}
               >
-                {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                {item.label}
+                <span
+                  className="absolute -bottom-1 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
+                  style={{ background: 'linear-gradient(90deg, #782CFF, #B18CFF)' }}
+                />
               </button>
-            </div>
+            ))}
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="font-orbitron text-xs font-bold tracking-wider px-5 py-2.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, #782CFF, #B18CFF)',
+                color: '#fff',
+                boxShadow: '0 0 15px rgba(120,44,255,0.4)',
+              }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.7)'}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 15px rgba(120,44,255,0.4)'}
+            >
+              GET IN TOUCH
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg transition-colors"
+              style={{
+                background: 'rgba(120,44,255,0.1)',
+                color: '#DDE1E6',
+                border: '1px solid rgba(120,44,255,0.2)',
+              }}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Nav */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-dark border-t border-gray-dark/50">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block px-3 py-2 text-gray-light hover:text-lavender transition-colors duration-200 text-sm font-medium w-full text-left"
-                >
-                  {item.label}
-                </button>
-              ))}
+          <div
+            className="md:hidden py-4 space-y-1"
+            style={{
+              borderTop: '1px solid rgba(120,44,255,0.15)',
+              background: 'rgba(10,10,13,0.98)',
+            }}
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="block w-full text-left px-4 py-3 font-space text-sm font-medium transition-colors duration-200 rounded-lg"
+                style={{ color: '#8A8F9A' }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.color = '#DDE1E6';
+                  (e.currentTarget as HTMLElement).style.background = 'rgba(120,44,255,0.08)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.color = '#8A8F9A';
+                  (e.currentTarget as HTMLElement).style.background = 'transparent';
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+            <div className="px-4 pt-2">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="w-full font-orbitron text-xs font-bold tracking-wider py-3 rounded-lg"
+                style={{
+                  background: 'linear-gradient(135deg, #782CFF, #B18CFF)',
+                  color: '#fff',
+                }}
+              >
+                GET IN TOUCH
+              </button>
             </div>
           </div>
         )}
