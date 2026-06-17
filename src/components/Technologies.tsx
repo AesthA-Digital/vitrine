@@ -118,17 +118,7 @@ export default function SkillsSection() {
       </div>
 
       {/* Drifting aurora blobs */}
-      <div
-        className="absolute pointer-events-none animate-aurora-drift-rev"
-        style={{
-          width: 500,
-          height: 500,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.07) 0%, transparent 65%)',
-          top: '30%',
-          left: '-10%',
-        }}
-      />
+     
       <div
         className="absolute pointer-events-none animate-aurora-drift"
         style={{
