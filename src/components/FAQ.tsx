@@ -1,37 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-
-const faqs = [
-  {
-    question: 'What are your typical project delivery times?',
-    answer: 'Delivery times vary by project scope. Simple landing pages typically take 1–2 weeks, custom web applications 4–8 weeks, and mobile apps 6–12 weeks. We provide detailed timelines during our initial consultation.',
-  },
-  {
-    question: 'How do you handle billing and payments?',
-    answer: 'We offer flexible payment terms: 50% upfront for fixed-price projects, weekly/bi-weekly invoicing for daily rate work, and monthly billing for retainer services. All payments are handled through secure invoicing systems.',
-  },
-  {
-    question: 'Do you provide ongoing maintenance after project completion?',
-    answer: 'Yes! We offer comprehensive maintenance packages starting from €100/month, including bug fixes, security updates, performance monitoring, and feature enhancements. All projects include 30 days of free support post-delivery.',
-  },
-  {
-    question: 'Can you work with existing development teams?',
-    answer: 'Absolutely. We frequently collaborate with existing teams, whether as a lead developer, specialist consultant, or team member. We adapt to your existing workflows, tools, and methodologies seamlessly.',
-  },
-  {
-    question: 'What technologies do you recommend for my project?',
-    answer: 'Technology choices depend on your specific requirements, budget, timeline, and long-term goals. We provide detailed technology recommendations with pros and cons during our consultation phase.',
-  },
-  {
-    question: 'Do you handle deployment and hosting setup?',
-    answer: 'Yes, we provide complete DevOps services including CI/CD pipeline setup, cloud deployment (AWS, Google Cloud, Azure), domain configuration, SSL certificates, and ongoing server management as needed.',
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export const FAQ: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
+
+  const faqs = [
+    { question: t('faq.q1'), answer: t('faq.a1') },
+    { question: t('faq.q2'), answer: t('faq.a2') },
+    { question: t('faq.q3'), answer: t('faq.a3') },
+    { question: t('faq.q4'), answer: t('faq.a4') },
+    { question: t('faq.q5'), answer: t('faq.a5') },
+    { question: t('faq.q6'), answer: t('faq.a6') },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,7 +24,7 @@ export const FAQ: React.FC = () => {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   return (
     <section
@@ -111,16 +95,16 @@ export const FAQ: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              FAQ
+              {t('faq.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              COMMON QUESTIONS
+              {t('faq.title')}
             </h2>
             <p className="text-xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Everything you need to know about working with us
+              {t('faq.subtitle')}
             </p>
           </div>
 
@@ -192,10 +176,10 @@ export const FAQ: React.FC = () => {
               style={{ background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(120,44,255,0.06), transparent)' }}
             />
             <h3 className="font-orbitron text-xl font-bold mb-3 relative z-10" style={{ color: '#DDE1E6' }}>
-              STILL HAVE QUESTIONS?
+              {t('faq.more.title')}
             </h3>
             <p className="mb-6 relative z-10" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              We're here to help. Reach out for any specific questions about your project.
+              {t('faq.more.desc')}
             </p>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -208,7 +192,7 @@ export const FAQ: React.FC = () => {
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 35px rgba(120,44,255,0.6)'}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(120,44,255,0.35)'}
             >
-              ASK YOUR QUESTION
+              {t('faq.more.button')}
             </button>
           </div>
         </div>

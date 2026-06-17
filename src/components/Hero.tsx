@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const CrystalLogo: React.FC = () => (
   <svg
@@ -66,6 +67,7 @@ const CrystalLogo: React.FC = () => (
 export const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const t = setTimeout(() => setIsVisible(true), 80);
@@ -74,6 +76,13 @@ export const Hero: React.FC = () => {
 
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  const label = language === 'en' ? 'Premium Development Studio' : 'Studio de Développement Premium';
+  const stats = language === 'en'
+    ? [{ value: '5+', label: 'Years Experience' }, { value: '50+', label: 'Projects Shipped' }, { value: '100%', label: 'Client Satisfaction' }]
+    : [{ value: '5+', label: 'Ans d\'Expérience' }, { value: '50+', label: 'Projets Livrés' }, { value: '100%', label: 'Satisfaction Client' }];
+  const tagline = language === 'en' ? 'Build. Perform. Grow.' : 'Construire. Performer. Grandir.';
+  const scrollText = language === 'en' ? 'Scroll' : 'Défiler';
 
   const particles = Array.from({ length: 16 }, (_, i) => i);
 
@@ -205,20 +214,20 @@ export const Hero: React.FC = () => {
                 className="font-mono-brand text-xs tracking-[0.3em] uppercase"
                 style={{ color: '#782CFF' }}
               >
-                Premium Development Studio
+                {label}
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="font-orbitron leading-[1.05]">
               <span className="block text-5xl md:text-6xl xl:text-[4.5rem] font-black" style={{ color: '#DDE1E6' }}>
-                POWERFUL
+                {language === 'en' ? 'POWERFUL' : 'EXPÉRIENCES'}
               </span>
               <span className="block text-5xl md:text-6xl xl:text-[4.5rem] font-black text-shimmer">
-                DIGITAL
+                {language === 'en' ? 'DIGITAL' : 'DIGITALES'}
               </span>
               <span className="block text-5xl md:text-6xl xl:text-[4.5rem] font-black" style={{ color: '#DDE1E6' }}>
-                EXPERIENCES
+                {language === 'en' ? 'EXPERIENCES' : 'PUISSANTES'}
               </span>
             </h1>
 
@@ -227,15 +236,16 @@ export const Hero: React.FC = () => {
               className="text-lg md:text-xl leading-relaxed max-w-lg"
               style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              We build fast, reliable, and scalable websites & applications enhanced
-              with AI automation — helping businesses grow, operate smarter, and stand&nbsp;out.
+              {language === 'en'
+                ? 'We build fast, reliable, and scalable websites & applications enhanced with AI automation — helping businesses grow, operate smarter, and stand out.'
+                : 'Nous créons des sites web et applications rapides, fiables et évolutifs, enrichis par l\'automatisation IA — aidant les entreprises à grandir, opérer plus intelligemment et se démarquer.'}
             </p>
 
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
               <span className="font-mono-brand text-xs tracking-[0.2em] uppercase" style={{ color: '#8A8F9A' }}>
-                Build. Perform. Grow.
+                {tagline}
               </span>
             </div>
 
@@ -259,7 +269,7 @@ export const Hero: React.FC = () => {
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.5), 0 4px 20px rgba(0,0,0,0.5)'}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  START YOUR PROJECT
+                  {language === 'en' ? 'START YOUR PROJECT' : 'DÉMARRER VOTRE PROJET'}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
@@ -281,7 +291,7 @@ export const Hero: React.FC = () => {
                   (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                 }}
               >
-                VIEW OUR WORK
+                {language === 'en' ? 'VIEW OUR WORK' : 'VOIR NOS RÉALISATIONS'}
               </button>
             </div>
 
@@ -293,11 +303,7 @@ export const Hero: React.FC = () => {
                 transition: 'opacity 0.9s ease 0.7s',
               }}
             >
-              {[
-                { value: '5+', label: 'Years Experience' },
-                { value: '50+', label: 'Projects Shipped' },
-                { value: '100%', label: 'Client Satisfaction' },
-              ].map(stat => (
+              {stats.map(stat => (
                 <div key={stat.label}>
                   <div className="font-orbitron text-2xl font-bold" style={{ color: '#782CFF' }}>
                     {stat.value}
@@ -407,7 +413,7 @@ export const Hero: React.FC = () => {
         style={{ color: '#8A8F9A', opacity: 0.55 }}
         aria-label="Scroll down"
       >
-        <span className="font-mono-brand text-xs tracking-[0.2em] uppercase">Scroll</span>
+        <span className="font-mono-brand text-xs tracking-[0.2em] uppercase">{scrollText}</span>
         <ChevronDown className="w-5 h-5 animate-bounce" />
       </button>
     </section>

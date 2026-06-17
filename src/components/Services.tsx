@@ -1,48 +1,62 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Monitor, Smartphone, Database, Zap, Wrench, Server } from "lucide-react";
-
-const services = [
-  {
-    icon: Monitor,
-    title: "Web Development",
-    description: "Custom web applications, SaaS platforms, landing pages, and AI-enhanced business tools built with modern scalable technologies.",
-    features: ["Custom web apps", "Landing pages", "AI integrations", "E-commerce platforms"],
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "Cross-platform mobile applications with Flutter, including AI-powered features such as smart assistants, automation, and real-time data experiences.",
-    features: ["Flutter & Dart", "iOS & Android", "Native performance", "AI-powered features"],
-  },
-  {
-    icon: Database,
-    title: "API & Backend",
-    description: "Scalable backend architectures, APIs, databases, and AI integrations designed to automate workflows and power modern digital products.",
-    features: ["Third-party APIs", "Microservices", "REST & AI", "Database design"],
-  },
-  {
-    icon: Zap,
-    title: "Performance & SEO",
-    description: "Website optimization for speed, accessibility, and search engine rankings to maximize your online presence and conversion rates.",
-    features: ["Speed optimization", "SEO implementation", "Accessibility", "Core Web Vitals"],
-  },
-  {
-    icon: Wrench,
-    title: "Maintenance & Support",
-    description: "Ongoing maintenance, bug fixes, and feature updates with flexible monthly retainer packages and priority support.",
-    features: ["Bug fixes", "Feature updates", "Security updates", "Monthly retainers"],
-  },
-  {
-    icon: Server,
-    title: "DevOps & CI/CD",
-    description: "Automated deployment pipelines, server setup, containerization with Docker, and cloud infrastructure on AWS, GCP, and Azure.",
-    features: ["CI/CD pipelines", "Docker containers", "Cloud deployment", "Server management"],
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export const Services: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
+
+  const services = [
+    {
+      icon: Monitor,
+      title: t('services.web.title'),
+      description: t('services.web.desc'),
+      features: language === 'en'
+        ? ["Custom web apps", "Landing pages", "AI integrations", "E-commerce platforms"]
+        : ["Applications web", "Sites vitrines", "Intégrations IA", "E-commerce"],
+    },
+    {
+      icon: Smartphone,
+      title: t('services.mobile.title'),
+      description: t('services.mobile.desc'),
+      features: language === 'en'
+        ? ["Flutter & Dart", "iOS & Android", "Native performance", "AI-powered features"]
+        : ["Flutter & Dart", "iOS & Android", "Performance native", "Fonctionnalités IA"],
+    },
+    {
+      icon: Database,
+      title: t('services.api.title'),
+      description: t('services.api.desc'),
+      features: language === 'en'
+        ? ["Third-party APIs", "Microservices", "REST & AI", "Database design"]
+        : ["API tierces", "Microservices", "REST & IA", "Conception BDD"],
+    },
+    {
+      icon: Zap,
+      title: t('services.performance.title'),
+      description: t('services.performance.desc'),
+      features: language === 'en'
+        ? ["Speed optimization", "SEO implementation", "Accessibility", "Core Web Vitals"]
+        : ["Optimisation vitesse", "Implémentation SEO", "Accessibilité", "Core Web Vitals"],
+    },
+    {
+      icon: Wrench,
+      title: t('services.maintenance.title'),
+      description: t('services.maintenance.desc'),
+      features: language === 'en'
+        ? ["Bug fixes", "Feature updates", "Security updates", "Monthly retainers"]
+        : ["Corrections bugs", "Mises à jour", "Sécurité", "Retainers mensuels"],
+    },
+    {
+      icon: Server,
+      title: t('services.devops.title'),
+      description: t('services.devops.desc'),
+      features: language === 'en'
+        ? ["CI/CD pipelines", "Docker containers", "Cloud deployment", "Server management"]
+        : ["Pipelines CI/CD", "Conteneurs Docker", "Déploiement cloud", "Gestion serveurs"],
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,7 +65,7 @@ export const Services: React.FC = () => {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   return (
     <section
@@ -113,16 +127,16 @@ export const Services: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              Services
+              {t('services.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              WHAT WE BUILD
+              {t('services.title')}
             </h2>
             <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Comprehensive development services to bring your digital ideas to life
+              {t('services.subtitle')}
             </p>
           </div>
 

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +53,13 @@ export const Contact: React.FC = () => {
     color: '#8A8F9A',
     marginBottom: '8px',
   };
+
+  const nextSteps = [
+    t('contact.next.1'),
+    t('contact.next.2'),
+    t('contact.next.3'),
+    t('contact.next.4'),
+  ];
 
   return (
     <section
@@ -123,16 +132,16 @@ export const Contact: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              Contact
+              {t('contact.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              START A PROJECT
+              {t('contact.title')}
             </h2>
             <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Ready to build something extraordinary? Let's talk.
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -140,9 +149,7 @@ export const Contact: React.FC = () => {
             {/* Info */}
             <div className="space-y-8">
               <p className="text-lg leading-relaxed" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                We're always excited to discuss new projects and opportunities. Whether you need
-                a custom web application, mobile app, or ongoing development support, Obsidian
-                Studio is here to help turn your vision into reality.
+                {t('contact.desc')}
               </p>
 
               {/* Contact methods */}
@@ -171,7 +178,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-orbitron text-xs font-bold tracking-wider mb-0.5" style={{ color: '#DDE1E6' }}>
-                      EMAIL US
+                      {t('contact.email.title')}
                     </h4>
                     <p style={{ color: '#782CFF', fontFamily: 'IBM Plex Mono, monospace', fontSize: '13px' }}>
                       aestha.digital@gmail.com
@@ -191,10 +198,10 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-orbitron text-xs font-bold tracking-wider mb-0.5" style={{ color: '#DDE1E6' }}>
-                      RESPONSE TIME
+                      {t('contact.response.title')}
                     </h4>
                     <p style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px' }}>
-                      Usually within 24 hours
+                      {t('contact.response.value')}
                     </p>
                   </div>
                 </div>
@@ -209,15 +216,10 @@ export const Contact: React.FC = () => {
                 }}
               >
                 <h4 className="font-orbitron text-xs font-bold tracking-wider mb-4" style={{ color: '#DDE1E6' }}>
-                  WHAT HAPPENS NEXT?
+                  {t('contact.next.title')}
                 </h4>
                 <ul className="space-y-2">
-                  {[
-                    'We review your project requirements',
-                    'Schedule a free consultation call',
-                    'Provide detailed proposal & timeline',
-                    'Begin development upon agreement',
-                  ].map((step, i) => (
+                  {nextSteps.map((step, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-sm"
@@ -248,7 +250,7 @@ export const Contact: React.FC = () => {
                 {!isSubmitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label style={labelStyle}>Your Name</label>
+                      <label style={labelStyle}>{t('contact.form.name')}</label>
                       <input
                         type="text"
                         id="name"
@@ -257,7 +259,7 @@ export const Contact: React.FC = () => {
                         onChange={handleChange}
                         required
                         style={inputStyle}
-                        placeholder="Antoine Hoareau"
+                        placeholder={language === 'en' ? 'Antoine Hoareau' : 'Votre nom'}
                         onFocus={e => {
                           (e.target as HTMLElement).style.borderColor = 'rgba(120,44,255,0.6)';
                           (e.target as HTMLElement).style.boxShadow = '0 0 15px rgba(120,44,255,0.15)';
@@ -270,7 +272,7 @@ export const Contact: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={labelStyle}>Email Address</label>
+                      <label style={labelStyle}>{t('contact.form.email')}</label>
                       <input
                         type="email"
                         id="email"
@@ -292,7 +294,7 @@ export const Contact: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={labelStyle}>Project Details</label>
+                      <label style={labelStyle}>{t('contact.form.message')}</label>
                       <textarea
                         id="message"
                         name="message"
@@ -301,7 +303,7 @@ export const Contact: React.FC = () => {
                         onChange={handleChange}
                         required
                         style={{ ...inputStyle, resize: 'none' }}
-                        placeholder="Tell us about your project, requirements, timeline, and budget..."
+                        placeholder={t('contact.form.placeholder')}
                         onFocus={e => {
                           (e.target as HTMLElement).style.borderColor = 'rgba(120,44,255,0.6)';
                           (e.target as HTMLElement).style.boxShadow = '0 0 15px rgba(120,44,255,0.15)';
@@ -325,17 +327,17 @@ export const Contact: React.FC = () => {
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.4)'}
                     >
                       <Send className="w-4 h-4" />
-                      SEND MESSAGE
+                      {t('contact.form.send')}
                     </button>
                   </form>
                 ) : (
                   <div className="text-center py-12">
                     <CheckCircle className="w-16 h-16 mx-auto mb-5 animate-pulse-glow" style={{ color: '#782CFF' }} />
                     <h3 className="font-orbitron text-xl font-bold mb-3" style={{ color: '#DDE1E6' }}>
-                      MESSAGE SENT
+                      {t('contact.form.sent')}
                     </h3>
                     <p style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                      Thank you for reaching out. We'll get back to you within 24 hours.
+                      {t('contact.form.thanks')}
                     </p>
                   </div>
                 )}

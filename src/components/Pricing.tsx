@@ -1,66 +1,53 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Check, Clock, Package, Wrench } from 'lucide-react';
-
-const plans = [
-  {
-    icon: Clock,
-    name: 'Daily Rate',
-    sub: 'TJM',
-    price: '€350–500',
-    period: 'per day',
-    description: 'Flexible daily rate based on project complexity and requirements.',
-    features: [
-      'Full-stack development',
-      'Direct communication',
-      'Agile methodology',
-      'Code reviews',
-      'Documentation included',
-      'Post-delivery support',
-    ],
-    popular: false,
-    accentColor: '#782CFF',
-  },
-  {
-    icon: Package,
-    name: 'Fixed-Price',
-    sub: 'Projects',
-    price: 'From €1000',
-    period: 'per project',
-    description: 'Complete project packages with defined scope and deliverables.',
-    features: [
-      'Landing pages & websites',
-      'MVP development',
-      'Mobile app development',
-      'Custom web applications',
-      'E-commerce solutions',
-      'Migration projects',
-    ],
-    popular: true,
-    accentColor: '#B18CFF',
-  },
-  {
-    icon: Wrench,
-    name: 'Retainer',
-    sub: 'Maintenance',
-    price: 'From €100',
-    period: 'per month',
-    description: 'Ongoing support and maintenance for existing applications.',
-    features: [
-      'Bug fixes & updates',
-      'Security patches',
-      'Performance monitoring',
-      'Feature enhancements',
-      'Priority support',
-      'Monthly reports',
-    ],
-    popular: false,
-    accentColor: '#782CFF',
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export const Pricing: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
+
+  const plans = [
+    {
+      icon: Clock,
+      name: t('pricing.daily.name'),
+      sub: t('pricing.daily.sub'),
+      price: '€350–500',
+      period: language === 'en' ? 'per day' : 'par jour',
+      description: t('pricing.daily.desc'),
+      features: language === 'en'
+        ? ['Full-stack development', 'Direct communication', 'Agile methodology', 'Code reviews', 'Documentation included', 'Post-delivery support']
+        : ['Développement full-stack', 'Communication directe', 'Méthodologie Agile', 'Revue de code', 'Documentation incluse', 'Support post-livraison'],
+      popular: false,
+      accentColor: '#782CFF',
+    },
+    {
+      icon: Package,
+      name: t('pricing.fixed.name'),
+      sub: t('pricing.fixed.sub'),
+      price: language === 'en' ? 'From €1000' : 'À partir de 1000€',
+      period: language === 'en' ? 'per project' : 'par projet',
+      description: t('pricing.fixed.desc'),
+      features: language === 'en'
+        ? ['Landing pages & websites', 'MVP development', 'Mobile app development', 'Custom web applications', 'E-commerce solutions', 'Migration projects']
+        : ['Sites vitrines', 'Développement MVP', 'Applications mobiles', 'Applications web personnalisées', 'Solutions e-commerce', 'Projets de migration'],
+      popular: true,
+      accentColor: '#B18CFF',
+    },
+    {
+      icon: Wrench,
+      name: t('pricing.retainer.name'),
+      sub: t('pricing.retainer.sub'),
+      price: language === 'en' ? 'From €100' : 'À partir de 100€',
+      period: language === 'en' ? 'per month' : 'par mois',
+      description: t('pricing.retainer.desc'),
+      features: language === 'en'
+        ? ['Bug fixes & updates', 'Security patches', 'Performance monitoring', 'Feature enhancements', 'Priority support', 'Monthly reports']
+        : ['Corrections & mises à jour', 'Correctifs de sécurité', 'Surveillance performance', 'Améliorations', 'Support prioritaire', 'Rapports mensuels'],
+      popular: false,
+      accentColor: '#782CFF',
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,7 +56,7 @@ export const Pricing: React.FC = () => {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   return (
     <section
@@ -142,16 +129,16 @@ export const Pricing: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              Pricing
+              {t('pricing.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              ENGAGEMENT MODELS
+              {t('pricing.title')}
             </h2>
             <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Transparent pricing with flexible models to fit your project needs
+              {t('pricing.subtitle')}
             </p>
           </div>
 
@@ -196,7 +183,7 @@ export const Pricing: React.FC = () => {
                       className="font-orbitron text-xs font-bold tracking-wider px-3 py-1 rounded-full"
                       style={{ background: 'linear-gradient(135deg, #782CFF, #B18CFF)', color: '#fff' }}
                     >
-                      POPULAR
+                      {t('pricing.popular')}
                     </span>
                   </div>
                 )}
@@ -283,7 +270,7 @@ export const Pricing: React.FC = () => {
                       }
                     }}
                   >
-                    GET STARTED
+                    {t('pricing.cta')}
                   </button>
                 </div>
               </div>
@@ -302,11 +289,10 @@ export const Pricing: React.FC = () => {
               style={{ background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(120,44,255,0.06), transparent)' }}
             />
             <h3 className="font-orbitron text-xl font-bold mb-3 relative z-10" style={{ color: '#DDE1E6' }}>
-              CUSTOM SOLUTIONS AVAILABLE
+              {t('pricing.custom.title')}
             </h3>
             <p className="max-w-2xl mx-auto relative z-10" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Every project is unique. We're happy to discuss custom pricing and engagement models
-              that perfectly fit your specific requirements, timeline, and budget.
+              {t('pricing.custom.desc')}
             </p>
           </div>
         </div>

@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Shield, Zap, Users } from "lucide-react";
-
-const values = [
-  { icon: Shield, label: "Reliability", sub: "On-time delivery & quality code", color: '#782CFF' },
-  { icon: Zap,    label: "Performance", sub: "Modern solutions & best practices", color: '#B18CFF' },
-  { icon: Users,  label: "Partnership", sub: "Close collaboration at every step", color: '#782CFF' },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
+
+  const values = [
+    { icon: Shield, label: t('about.value1'), sub: t('about.value1.sub'), color: '#782CFF' },
+    { icon: Zap,    label: t('about.value2'), sub: t('about.value2.sub'), color: '#B18CFF' },
+    { icon: Users,  label: t('about.value3'), sub: t('about.value3.sub'), color: '#782CFF' },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,16 +89,16 @@ export const About: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              About
+              {t('about.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              WHO WE ARE
+              {t('about.title')}
             </h2>
             <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              A premium development studio built on precision, performance, and passion
+              {t('about.subtitle')}
             </p>
           </div>
 
@@ -105,16 +107,12 @@ export const About: React.FC = () => {
             <div className="space-y-8">
               <div className="space-y-5">
                 <p className="text-lg leading-relaxed" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Founded by{' '}
-                  <span style={{ color: '#DDE1E6', fontWeight: 600 }}>Antoine Hoareau</span>
-                  , an EPITECH graduate with over 5 years of expertise in full-stack and mobile
-                  development. We specialize in building modern, high-performance web applications,
-                  cross-platform mobile solutions, and AI-powered automation systems.
+                  {t('about.p1')}{' '}
+                  <span style={{ color: '#DDE1E6', fontWeight: 600 }}>{t('about.p1.name')}</span>
+                  {t('about.p1.rest')}
                 </p>
                 <p className="text-lg leading-relaxed" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Our approach combines reliable delivery, scalable architecture, and innovative AI
-                  integration — creating smart digital solutions tailored to real business needs while
-                  maintaining close client relationships throughout the entire development process.
+                  {t('about.p2')}
                 </p>
               </div>
 
@@ -214,10 +212,10 @@ export const About: React.FC = () => {
                       Antoine Hoareau
                     </p>
                     <p className="text-sm mb-1" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                      Full-Stack & Mobile Developer
+                      {t('about.role')}
                     </p>
                     <p className="text-xs mb-6" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                      EPITECH Graduate · 5+ Years Experience
+                      {t('about.exp')}
                     </p>
 
                     <div className="flex flex-wrap gap-2 justify-center">

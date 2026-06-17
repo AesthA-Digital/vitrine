@@ -1,9 +1,31 @@
 import React from 'react';
 import { Github, Linkedin, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const { t, language } = useLanguage();
+
+  const navItems = language === 'en'
+    ? ['About', 'Services', 'Portfolio', 'Pricing', 'Contact']
+    : ['À propos', 'Services', 'Portfolio', 'Tarifs', 'Contact'];
+
+  const services = language === 'en'
+    ? ['Web Development', 'Mobile Apps', 'API & Backend', 'Performance & SEO', 'Maintenance', 'DevOps & CI/CD']
+    : ['Développement Web', 'Applications Mobile', 'API & Backend', 'Performance & SEO', 'Maintenance', 'DevOps & CI/CD'];
+
+  const tagline = language === 'en'
+    ? 'BUILT IN OBSIDIAN. DESIGNED TO PERFORM.'
+    : 'CONÇU DANS OBSIDIAN. CONÇU POUR PERFORMER.';
+
+  const copyright = language === 'en'
+    ? `© ${currentYear} Obsidian Studio — Premium Development. Powerful Results.`
+    : `© ${currentYear} Obsidian Studio — Développement Premium. Résultats Puissants.`;
+
+  const legalItems = language === 'en'
+    ? ['Legal Mentions', 'Privacy Policy']
+    : ['Mentions Légales', 'Politique de Confidentialité'];
 
   return (
     <footer style={{ background: '#0A0A0D', borderTop: '1px solid rgba(120,44,255,0.12)' }}>
@@ -28,12 +50,11 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="leading-relaxed max-w-sm" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Premium web and application development studio. We build powerful, high-performance
-              digital experiences that help businesses grow, operate smarter, and stand out.
+              {t('footer.tagline')}
             </p>
 
             <p className="font-mono-brand text-xs tracking-widest" style={{ color: 'rgba(120,44,255,0.7)' }}>
-              BUILT IN OBSIDIAN. DESIGNED TO PERFORM.
+              {tagline}
             </p>
 
             <div className="flex gap-3">
@@ -79,13 +100,13 @@ export const Footer: React.FC = () => {
               className="font-orbitron text-xs font-bold tracking-[0.2em] uppercase mb-6"
               style={{ color: '#782CFF' }}
             >
-              Navigation
+              {language === 'en' ? 'Navigation' : 'Navigation'}
             </h4>
             <ul className="space-y-3">
-              {['About', 'Services', 'Portfolio', 'Pricing', 'Contact'].map(link => (
+              {navItems.map((link, i) => (
                 <li key={link}>
                   <button
-                    onClick={() => scrollTo(link.toLowerCase())}
+                    onClick={() => scrollTo(['about', 'services', 'portfolio', 'pricing', 'contact'][i])}
                     className="text-sm transition-colors duration-200"
                     style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
                     onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#B18CFF'}
@@ -104,10 +125,10 @@ export const Footer: React.FC = () => {
               className="font-orbitron text-xs font-bold tracking-[0.2em] uppercase mb-6"
               style={{ color: '#782CFF' }}
             >
-              Services
+              {t('footer.services')}
             </h4>
             <ul className="space-y-3">
-              {['Web Development', 'Mobile Apps', 'API & Backend', 'Performance & SEO', 'Maintenance', 'DevOps & CI/CD'].map(s => (
+              {services.map(s => (
                 <li
                   key={s}
                   className="text-sm"
@@ -126,10 +147,10 @@ export const Footer: React.FC = () => {
           style={{ borderTop: '1px solid rgba(120,44,255,0.1)' }}
         >
           <p className="font-mono-brand text-xs" style={{ color: '#8A8F9A' }}>
-            © {currentYear} Obsidian Studio — Premium Development. Powerful Results.
+            {copyright}
           </p>
           <div className="flex gap-6">
-            {['Legal Mentions', 'Privacy Policy'].map(label => (
+            {legalItems.map(label => (
               <button
                 key={label}
                 className="font-mono-brand text-xs transition-colors"

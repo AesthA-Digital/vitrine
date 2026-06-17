@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -16,13 +18,19 @@ export const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'fr' : 'en');
+  };
+
   const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Services', id: 'services' },
-    { label: 'Portfolio', id: 'portfolio' },
-    { label: 'Pricing', id: 'pricing' },
-    { label: 'Contact', id: 'contact' },
+    { label: t('nav.services'), id: 'services' },
+    { label: t('nav.portfolio'), id: 'portfolio' },
+    { label: t('nav.pricing'), id: 'pricing' },
+    { label: t('nav.faq'), id: 'faq' },
+    { label: t('nav.contact'), id: 'contact' },
   ];
+
+  const ctaLabel = language === 'en' ? 'GET IN TOUCH' : 'NOUS CONTACTER';
 
   return (
     <header
@@ -78,6 +86,28 @@ export const Header: React.FC = () => {
               </button>
             ))}
 
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300"
+              style={{
+                background: 'rgba(120,44,255,0.1)',
+                border: '1px solid rgba(120,44,255,0.25)',
+                color: '#DDE1E6',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.5)';
+                (e.currentTarget as HTMLElement).style.background = 'rgba(120,44,255,0.18)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.25)';
+                (e.currentTarget as HTMLElement).style.background = 'rgba(120,44,255,0.1)';
+              }}
+            >
+              <Globe className="w-4 h-4" style={{ color: '#782CFF' }} />
+              <span className="font-mono-brand text-xs font-bold uppercase">{language}</span>
+            </button>
+
             <button
               onClick={() => scrollToSection('contact')}
               className="font-orbitron text-xs font-bold tracking-wider px-5 py-2.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
@@ -89,12 +119,25 @@ export const Header: React.FC = () => {
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.7)'}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 15px rgba(120,44,255,0.4)'}
             >
-              GET IN TOUCH
+              {ctaLabel}
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-3">
+            {/* Language Toggle Mobile */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all duration-300"
+              style={{
+                background: 'rgba(120,44,255,0.1)',
+                border: '1px solid rgba(120,44,255,0.25)',
+                color: '#DDE1E6',
+              }}
+            >
+              <Globe className="w-4 h-4" style={{ color: '#782CFF' }} />
+              <span className="font-mono-brand text-xs font-bold uppercase">{language}</span>
+            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg transition-colors"
@@ -146,7 +189,7 @@ export const Header: React.FC = () => {
                   color: '#fff',
                 }}
               >
-                GET IN TOUCH
+                {ctaLabel}
               </button>
             </div>
           </div>

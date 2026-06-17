@@ -1,40 +1,42 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface Tech {
   name: string;
   logo: string;
   category: string;
+  categoryKey: string;
 }
 
 const allTechs: Tech[] = [
   // Frontend
-  { name: 'React',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Frontend' },
-  { name: 'TypeScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', category: 'Frontend' },
-  { name: 'Next.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',         category: 'Frontend' },
-  { name: 'JavaScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', category: 'Frontend' },
-  { name: 'Angular',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',   category: 'Frontend' },
-  { name: 'Tailwind CSS',  logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',             category: 'Frontend' },
-  { name: 'HTML/CSS',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',           category: 'Frontend' },
+  { name: 'React',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'TypeScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'Next.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',         category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'JavaScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'Angular',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',   category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'Tailwind CSS',  logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',             category: 'Frontend', categoryKey: 'Frontend' },
+  { name: 'HTML/CSS',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',           category: 'Frontend', categoryKey: 'Frontend' },
   // Mobile
-  { name: 'Flutter',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',      category: 'Mobile' },
-  { name: 'React Native',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Mobile' },
-  { name: 'Dart',          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',             category: 'Mobile' },
+  { name: 'Flutter',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',      category: 'Mobile', categoryKey: 'Mobile' },
+  { name: 'React Native',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Mobile', categoryKey: 'Mobile' },
+  { name: 'Dart',          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',             category: 'Mobile', categoryKey: 'Mobile' },
   // Backend
-  { name: 'Node.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',        category: 'Backend' },
-  { name: 'PHP',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',               category: 'Backend' },
-  { name: 'Symfony',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',       category: 'Backend' },
-  { name: 'Python',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',         category: 'Backend' },
+  { name: 'Node.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',        category: 'Backend', categoryKey: 'Backend' },
+  { name: 'PHP',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',               category: 'Backend', categoryKey: 'Backend' },
+  { name: 'Symfony',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',       category: 'Backend', categoryKey: 'Backend' },
+  { name: 'Python',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',         category: 'Backend', categoryKey: 'Backend' },
   // Database
-  { name: 'MySQL',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',           category: 'Database' },
-  { name: 'PostgreSQL',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', category: 'Database' },
-  { name: 'MongoDB',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',       category: 'Database' },
-  { name: 'Firebase',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',        category: 'Database' },
+  { name: 'MySQL',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',           category: 'Database', categoryKey: 'Database' },
+  { name: 'PostgreSQL',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', category: 'Database', categoryKey: 'Database' },
+  { name: 'MongoDB',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',       category: 'Database', categoryKey: 'Database' },
+  { name: 'Firebase',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',        category: 'Database', categoryKey: 'Database' },
   // DevOps
-  { name: 'Docker',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',         category: 'DevOps' },
-  { name: 'Git',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',               category: 'DevOps' },
-  { name: 'AWS',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', category: 'DevOps' },
-  { name: 'Google Cloud',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', category: 'DevOps' },
-  { name: 'Linux',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',           category: 'DevOps' },
+  { name: 'Docker',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',         category: 'DevOps', categoryKey: 'DevOps' },
+  { name: 'Git',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',               category: 'DevOps', categoryKey: 'DevOps' },
+  { name: 'AWS',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', category: 'DevOps', categoryKey: 'DevOps' },
+  { name: 'Google Cloud',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', category: 'DevOps', categoryKey: 'DevOps' },
+  { name: 'Linux',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',           category: 'DevOps', categoryKey: 'DevOps' },
 ];
 
 // Split into 3 rows
@@ -104,6 +106,12 @@ const MarqueeRow: React.FC<{ techs: Tech[]; direction: 'left' | 'right' }> = ({ 
 };
 
 export default function SkillsSection() {
+  const { t, language } = useLanguage();
+
+  const categoryLabels: Record<string, string> = language === 'en'
+    ? { Frontend: 'Frontend', Mobile: 'Mobile', Backend: 'Backend', Database: 'Database', DevOps: 'DevOps' }
+    : { Frontend: 'Frontend', Mobile: 'Mobile', Backend: 'Backend', Database: 'BDD', DevOps: 'DevOps' };
+
   return (
     <section
       className="py-20 relative overflow-hidden bg-mesh-lavender"
@@ -167,20 +175,20 @@ export default function SkillsSection() {
               <div className="flex items-center gap-3 mb-3">
                 <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
                 <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-                  Technology Stack
+                  {t('tech.label')}
                 </span>
               </div>
               <h2 className="font-orbitron text-4xl md:text-5xl font-black" style={{ color: '#DDE1E6' }}>
-                WORKS WITH ANY STACK
+                {t('tech.title')}
               </h2>
             </div>
 
             {/* Stats inline */}
             <div className="flex gap-8 pb-1">
               {[
-                { value: `${allTechs.length}+`, label: 'Technologies' },
-                { value: '5+',   label: 'Years' },
-                { value: '6',    label: 'Domains' },
+                { value: `${allTechs.length}+`, label: t('tech.stats.tech') },
+                { value: '5+',   label: t('tech.stats.years') },
+                { value: '6',    label: t('tech.stats.domains') },
               ].map(s => (
                 <div key={s.label} className="text-right">
                   <div className="font-orbitron text-2xl font-black" style={{ color: '#782CFF' }}>
@@ -210,7 +218,7 @@ export default function SkillsSection() {
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ background: categoryColors[cat] }}
                 />
-                {cat}
+                {categoryLabels[cat]}
               </span>
             ))}
           </div>
@@ -240,14 +248,13 @@ export default function SkillsSection() {
             }}
           >
             <p style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px' }}>
-              Technology evolves rapidly — so do we. We continuously learn and adapt to ensure
-              your project benefits from the latest innovations and best practices.
+              {t('tech.tagline')}
             </p>
             <span
               className="font-mono-brand text-xs tracking-[0.2em] uppercase whitespace-nowrap"
               style={{ color: '#782CFF' }}
             >
-              Always Learning
+              {t('tech.always')}
             </span>
           </div>
         </div>

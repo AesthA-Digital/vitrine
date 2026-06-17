@@ -1,44 +1,46 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Github, Smartphone, Monitor } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'HR Management Platform',
-    description: 'Complete HR solution with employee management, payroll, and performance tracking built with React and Symfony.',
-    technologies: ['React', 'TypeScript', 'Symfony', 'MySQL'],
-    image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800',
-    type: 'Web Application',
-    icon: Monitor,
-  },
-  {
-    title: 'Mobile Booking App',
-    description: 'Cross-platform appointment booking app for service providers with real-time notifications and payment integration.',
-    technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe API'],
-    image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=800',
-    type: 'Mobile App',
-    icon: Smartphone,
-  },
-  {
-    title: 'E-commerce Dashboard',
-    description: 'Admin dashboard for e-commerce management with analytics, inventory tracking, and order processing.',
-    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
-    type: 'Web Application',
-    icon: Monitor,
-  },
-  {
-    title: 'Fitness Tracking App',
-    description: 'Personal fitness tracker with workout logging, progress tracking, and social features built with Flutter.',
-    technologies: ['Flutter', 'Dart', 'SQLite', 'REST API'],
-    image: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=800',
-    type: 'Mobile App',
-    icon: Smartphone,
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export const Portfolio: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
+
+  const projects = [
+    {
+      title: t('portfolio.project1.title'),
+      description: t('portfolio.project1.desc'),
+      technologies: ['React', 'TypeScript', 'Symfony', 'MySQL'],
+      image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800',
+      type: t('portfolio.type.web'),
+      icon: Monitor,
+    },
+    {
+      title: t('portfolio.project2.title'),
+      description: t('portfolio.project2.desc'),
+      technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe API'],
+      image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=800',
+      type: t('portfolio.type.mobile'),
+      icon: Smartphone,
+    },
+    {
+      title: t('portfolio.project3.title'),
+      description: t('portfolio.project3.desc'),
+      technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+      image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
+      type: t('portfolio.type.web'),
+      icon: Monitor,
+    },
+    {
+      title: t('portfolio.project4.title'),
+      description: t('portfolio.project4.desc'),
+      technologies: ['Flutter', 'Dart', 'SQLite', 'REST API'],
+      image: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=800',
+      type: t('portfolio.type.mobile'),
+      icon: Smartphone,
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +49,7 @@ export const Portfolio: React.FC = () => {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   return (
     <section
@@ -120,16 +122,16 @@ export const Portfolio: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
             <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-              Portfolio
+              {t('portfolio.label')}
             </span>
           </div>
 
           <div className="mb-16">
             <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-              FEATURED PROJECTS
+              {t('portfolio.title')}
             </h2>
             <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              A showcase of recent work and successful client collaborations
+              {t('portfolio.subtitle')}
             </p>
           </div>
 
@@ -219,7 +221,7 @@ export const Portfolio: React.FC = () => {
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8A8F9A'}
                     >
                       <ExternalLink className="w-4 h-4" />
-                      View Project
+                      {t('portfolio.view')}
                     </button>
                     <button
                       className="flex items-center gap-2 text-sm transition-colors duration-200"
@@ -228,7 +230,7 @@ export const Portfolio: React.FC = () => {
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8A8F9A'}
                     >
                       <Github className="w-4 h-4" />
-                      Source Code
+                      {t('portfolio.source')}
                     </button>
                   </div>
                 </div>
@@ -249,10 +251,10 @@ export const Portfolio: React.FC = () => {
                 style={{ background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(120,44,255,0.08), transparent)' }}
               />
               <h3 className="font-orbitron text-2xl font-bold mb-4 relative z-10" style={{ color: '#DDE1E6' }}>
-                READY TO START YOUR PROJECT?
+                {t('portfolio.cta.title')}
               </h3>
               <p className="text-lg mb-8 max-w-2xl mx-auto relative z-10" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-                Let's discuss how we can help bring your ideas to life with custom development solutions.
+                {t('portfolio.cta.desc')}
               </p>
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -265,7 +267,7 @@ export const Portfolio: React.FC = () => {
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 45px rgba(120,44,255,0.7)'}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(120,44,255,0.4)'}
               >
-                GET IN TOUCH
+                {t('portfolio.cta.button')}
               </button>
             </div>
           </div>
