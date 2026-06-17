@@ -171,7 +171,7 @@ export default function SkillsSection() {
                 </span>
               </div>
               <h2 className="font-orbitron text-4xl md:text-5xl font-black" style={{ color: '#DDE1E6' }}>
-                WORKS WITH ANY STACKze
+                WORKS WITH ANY STACK
               </h2>
             </div>
 
