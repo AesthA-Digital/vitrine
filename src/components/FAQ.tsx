@@ -48,9 +48,9 @@ export const FAQ: React.FC = () => {
       className="py-24 relative overflow-hidden bg-mesh-violet"
     >
       {/* Top edge with traveling light */}
-      <div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
+      {/*<div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
         <div className="divider-light" style={{ animationDelay: '2s' }} />
-      </div>
+      </div>*/}
 
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-25" />
