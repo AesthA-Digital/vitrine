@@ -203,9 +203,9 @@ export const Services: React.FC = () => {
       </div>
 
       {/* Bottom edge with traveling light */}
-      <div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.1)' }}>
+      {/*<div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.1)' }}>
         <div className="divider-light" style={{ animationDelay: '2.5s' }} />
-      </div>
+      </div>*/}
     </section>
   );
 };
