@@ -1,44 +1,113 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-interface Skill {
+interface Tech {
   name: string;
-  category: string;
   logo: string;
-  description: string;
+  category: string;
 }
 
-const skills: Skill[] = [
-  { name: 'HTML/CSS',     category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',       description: 'Semantic markup & responsive styling' },
-  { name: 'Tailwind CSS', category: 'Frontend', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',            description: 'Utility-first CSS framework' },
-  { name: 'React',        category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',          description: 'Component-based UI development' },
-  { name: 'TypeScript',   category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', description: 'Type-safe JavaScript development' },
-  { name: 'JavaScript',   category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', description: 'Modern ES6+ development' },
-  { name: 'Angular',      category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',   description: 'Enterprise web applications' },
-  { name: 'React Native', category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',          description: 'Cross-platform mobile apps' },
-  { name: 'Flutter',      category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',      description: 'Beautiful native applications' },
-  { name: 'Dart',         category: 'Mobile',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',            description: 'Flutter development language' },
-  { name: 'Next.js',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',        description: 'Full-stack React framework' },
-  { name: 'Node.js',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',        description: 'JavaScript runtime environment' },
-  { name: 'PHP',          category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',              description: 'Server-side web development' },
-  { name: 'Symfony',      category: 'Backend',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',      description: 'PHP web application framework' },
-  { name: 'MySQL',        category: 'Database', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',          description: 'Relational database management' },
-  { name: 'Docker',       category: 'DevOps',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',        description: 'Containerization & deployment' },
-  { name: 'Git CI/CD',    category: 'DevOps',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',              description: 'Version control & automation' },
+const allTechs: Tech[] = [
+  // Frontend
+  { name: 'React',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Frontend' },
+  { name: 'TypeScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', category: 'Frontend' },
+  { name: 'Next.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',         category: 'Frontend' },
+  { name: 'JavaScript',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', category: 'Frontend' },
+  { name: 'Angular',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',   category: 'Frontend' },
+  { name: 'Tailwind CSS',  logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',             category: 'Frontend' },
+  { name: 'HTML/CSS',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',           category: 'Frontend' },
+  // Mobile
+  { name: 'Flutter',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',      category: 'Mobile' },
+  { name: 'React Native',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',           category: 'Mobile' },
+  { name: 'Dart',          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',             category: 'Mobile' },
+  // Backend
+  { name: 'Node.js',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',        category: 'Backend' },
+  { name: 'PHP',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',               category: 'Backend' },
+  { name: 'Symfony',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg',       category: 'Backend' },
+  { name: 'Python',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',         category: 'Backend' },
+  // Database
+  { name: 'MySQL',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',           category: 'Database' },
+  { name: 'PostgreSQL',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', category: 'Database' },
+  { name: 'MongoDB',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',       category: 'Database' },
+  { name: 'Firebase',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',        category: 'Database' },
+  // DevOps
+  { name: 'Docker',        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',         category: 'DevOps' },
+  { name: 'Git',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',               category: 'DevOps' },
+  { name: 'AWS',           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', category: 'DevOps' },
+  { name: 'Google Cloud',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', category: 'DevOps' },
+  { name: 'Linux',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',           category: 'DevOps' },
 ];
 
-const categories = ['All', 'Frontend', 'Mobile', 'Backend', 'Database', 'DevOps'];
+// Split into 3 rows
+const row1 = allTechs.slice(0, 8);
+const row2 = allTechs.slice(8, 16);
+const row3 = allTechs.slice(16);
+
+const categoryColors: Record<string, string> = {
+  Frontend: '#782CFF',
+  Mobile:   '#B18CFF',
+  Backend:  '#782CFF',
+  Database: '#B18CFF',
+  DevOps:   '#782CFF',
+};
+
+const TechPill: React.FC<{ tech: Tech }> = ({ tech }) => (
+  <div
+    className="flex items-center gap-3 px-5 py-3 rounded-full flex-shrink-0 transition-all duration-300 cursor-default group"
+    style={{
+      background: 'rgba(120,44,255,0.06)',
+      border: '1px solid rgba(120,44,255,0.18)',
+      margin: '0 8px',
+    }}
+    onMouseEnter={e => {
+      const el = e.currentTarget as HTMLElement;
+      el.style.background = 'rgba(120,44,255,0.14)';
+      el.style.borderColor = 'rgba(120,44,255,0.5)';
+      el.style.boxShadow = '0 0 15px rgba(120,44,255,0.2)';
+    }}
+    onMouseLeave={e => {
+      const el = e.currentTarget as HTMLElement;
+      el.style.background = 'rgba(120,44,255,0.06)';
+      el.style.borderColor = 'rgba(120,44,255,0.18)';
+      el.style.boxShadow = 'none';
+    }}
+  >
+    <img
+      src={tech.logo}
+      alt={tech.name}
+      className="w-5 h-5 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+      onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+    />
+    <span
+      className="font-mono-brand text-xs font-medium tracking-wide whitespace-nowrap"
+      style={{ color: '#DDE1E6' }}
+    >
+      {tech.name}
+    </span>
+    <span
+      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+      style={{ background: categoryColors[tech.category] ?? '#782CFF', opacity: 0.7 }}
+    />
+  </div>
+);
+
+const MarqueeRow: React.FC<{ techs: Tech[]; direction: 'left' | 'right' }> = ({ techs, direction }) => {
+  const doubled = [...techs, ...techs];
+  return (
+    <div className="overflow-hidden py-2">
+      <div className={direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} style={{ display: 'flex', width: 'max-content' }}>
+        {doubled.map((tech, i) => (
+          <TechPill key={`${tech.name}-${i}`} tech={tech} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function SkillsSection() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const filteredSkills = selectedCategory === 'All'
-    ? skills
-    : skills.filter(s => s.category === selectedCategory);
-
   return (
     <section
-      className="py-24 relative overflow-hidden"
-      style={{ background: '#14161C' }}
+      className="py-20 relative overflow-hidden"
+      style={{ background: '#0A0A0D' }}
     >
       {/* Top edge */}
       <div
@@ -47,166 +116,105 @@ export default function SkillsSection() {
       />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid opacity-25" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, #14161C 100%)' }}
+          style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 50%, transparent 30%, #0A0A0D 100%)' }}
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Label */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
-          <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
-            Stack
-          </span>
-        </div>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="h-px w-12" style={{ background: 'linear-gradient(90deg, #782CFF, transparent)' }} />
+                <span className="font-mono-brand text-xs tracking-[0.25em] uppercase" style={{ color: '#782CFF' }}>
+                  Technology Stack
+                </span>
+              </div>
+              <h2 className="font-orbitron text-4xl md:text-5xl font-black" style={{ color: '#DDE1E6' }}>
+                WORKS WITH ANY STACK
+              </h2>
+            </div>
 
-        <div className="mb-12">
-          <h2 className="font-orbitron text-4xl md:text-5xl font-black mb-4" style={{ color: '#DDE1E6' }}>
-            TECHNICAL SKILLS
-          </h2>
-          <p className="text-xl max-w-2xl" style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}>
-            Cutting-edge technologies and modern development practices
-          </p>
-        </div>
+            {/* Stats inline */}
+            <div className="flex gap-8 pb-1">
+              {[
+                { value: `${allTechs.length}+`, label: 'Technologies' },
+                { value: '5+',   label: 'Years' },
+                { value: '6',    label: 'Domains' },
+              ].map(s => (
+                <div key={s.label} className="text-right">
+                  <div className="font-orbitron text-2xl font-black" style={{ color: '#782CFF' }}>
+                    {s.value}
+                  </div>
+                  <div className="font-mono-brand text-xs tracking-widest uppercase mt-0.5" style={{ color: '#8A8F9A' }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Filter */}
-        <div className="flex flex-wrap gap-3 mb-12">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className="font-orbitron text-xs font-bold tracking-wider px-5 py-2.5 rounded-full transition-all duration-300"
-              style={
-                selectedCategory === cat
-                  ? {
-                      background: 'linear-gradient(135deg, #782CFF, #B18CFF)',
-                      color: '#fff',
-                      boxShadow: '0 0 18px rgba(120,44,255,0.4)',
-                    }
-                  : {
-                      background: 'rgba(120,44,255,0.06)',
-                      color: '#8A8F9A',
-                      border: '1px solid rgba(120,44,255,0.2)',
-                    }
-              }
-              onMouseEnter={e => {
-                if (selectedCategory !== cat) {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.5)';
-                  (e.currentTarget as HTMLElement).style.color = '#DDE1E6';
-                }
-              }}
-              onMouseLeave={e => {
-                if (selectedCategory !== cat) {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.2)';
-                  (e.currentTarget as HTMLElement).style.color = '#8A8F9A';
-                }
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
-          {filteredSkills.map((skill, i) => (
-            <div
-              key={skill.name}
-              className="group relative overflow-hidden rounded-xl p-5 text-center transition-all duration-300"
-              style={{
-                background: '#0A0A0D',
-                border: '1px solid rgba(120,44,255,0.15)',
-                animationDelay: `${i * 0.05}s`,
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(120,44,255,0.5)';
-                el.style.boxShadow = '0 0 25px rgba(120,44,255,0.15)';
-                el.style.transform = 'translateY(-3px)';
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(120,44,255,0.15)';
-                el.style.boxShadow = 'none';
-                el.style.transform = 'translateY(0)';
-              }}
-            >
-              {/* Sweep shimmer */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none"
+          {/* Category legend */}
+          <div className="flex flex-wrap gap-3 mt-8">
+            {['Frontend', 'Mobile', 'Backend', 'Database', 'DevOps'].map(cat => (
+              <span
+                key={cat}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full font-mono-brand text-xs"
                 style={{
-                  background: 'linear-gradient(135deg, transparent 0%, rgba(120,44,255,0.08) 50%, transparent 100%)',
-                }}
-              />
-
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110"
-                style={{
-                  background: 'rgba(120,44,255,0.08)',
-                  border: '1px solid rgba(120,44,255,0.18)',
+                  background: 'rgba(120,44,255,0.06)',
+                  border: '1px solid rgba(120,44,255,0.15)',
+                  color: '#8A8F9A',
                 }}
               >
-                <img src={skill.logo} alt={skill.name} className="w-7 h-7" />
-              </div>
-
-              <h3
-                className="font-orbitron text-xs font-bold tracking-wide mb-1 transition-colors duration-300"
-                style={{ color: '#DDE1E6' }}
-              >
-                {skill.name}
-              </h3>
-
-              <p
-                className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif' }}
-              >
-                {skill.description}
-              </p>
-
-              {/* Pulse dot on hover */}
-              <div
-                className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"
-                style={{ background: '#782CFF' }}
-              />
-            </div>
-          ))}
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: categoryColors[cat] }}
+                />
+                {cat}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { value: `${skills.length}+`, label: 'Technologies' },
-            { value: '5+',   label: 'Categories' },
-            { value: '24/7', label: 'Learning' },
-            { value: '5+',   label: 'Years Experience' },
-          ].map(stat => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-xl transition-all duration-300"
-              style={{
-                background: '#0A0A0D',
-                border: '1px solid rgba(120,44,255,0.12)',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.4)';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(120,44,255,0.1)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(120,44,255,0.12)';
-                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-              }}
+        {/* Marquee tracks with edge fade masks */}
+        <div
+          className="relative"
+          style={{
+            maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+          }}
+        >
+          <div className="space-y-3">
+            <MarqueeRow techs={row1} direction="left" />
+            <MarqueeRow techs={row2} direction="right" />
+            <MarqueeRow techs={row3} direction="left" />
+          </div>
+        </div>
+
+        {/* Bottom tagline */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+          <div
+            className="rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+            style={{
+              background: 'rgba(120,44,255,0.04)',
+              border: '1px solid rgba(120,44,255,0.12)',
+            }}
+          >
+            <p style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px' }}>
+              Technology evolves rapidly — so do we. We continuously learn and adapt to ensure
+              your project benefits from the latest innovations and best practices.
+            </p>
+            <span
+              className="font-mono-brand text-xs tracking-[0.2em] uppercase whitespace-nowrap"
+              style={{ color: '#782CFF' }}
             >
-              <div className="font-orbitron text-3xl font-black mb-2" style={{ color: '#782CFF' }}>
-                {stat.value}
-              </div>
-              <div className="font-mono-brand text-xs tracking-widest uppercase" style={{ color: '#8A8F9A' }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
+              Always Learning
+            </span>
+          </div>
         </div>
       </div>
 

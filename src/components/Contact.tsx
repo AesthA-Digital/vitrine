@@ -67,21 +67,8 @@ export const Contact: React.FC = () => {
         />
       </div>
 
-      {/* Ambient glow */}
-      <div
-        className="absolute pointer-events-none animate-pulse-glow"
-        style={{
-          width: 500,
-          height: 500,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.08) 0%, transparent 70%)',
-          bottom: -100,
-          left: '50%',
-          transform: 'translateX(-50%)',
-        }}
-      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           style={{
             opacity: isVisible ? 1 : 0,

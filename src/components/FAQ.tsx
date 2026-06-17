@@ -46,7 +46,7 @@ export const FAQ: React.FC = () => {
     <section
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
-      style={{ background: '#14161C' }}
+      style={{ background: '#0A0A0D' }}
     >
       {/* Top edge */}
       <div
@@ -58,7 +58,7 @@ export const FAQ: React.FC = () => {
         <div className="absolute inset-0 bg-grid opacity-25" />
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, #14161C 100%)' }}
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, #0A0A0D 100%)' }}
         />
       </div>
 
