@@ -132,7 +132,7 @@ export const Services: React.FC = () => {
                 key={i}
                 className="group relative overflow-hidden rounded-2xl p-7 transition-all duration-400"
                 style={{
-                  background: '#0A0A0D',
+                  background: '#14161C',
                   border: '1px solid rgba(120,44,255,0.15)',
                   animationDelay: `${i * 0.1}s`,
                 }}
