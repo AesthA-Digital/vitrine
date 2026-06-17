@@ -53,17 +53,60 @@ export const Portfolio: React.FC = () => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{ background: '#0A0A0D' }}
+      className="py-24 relative overflow-hidden bg-mesh-center"
     >
+      {/* Top edge with traveling light */}
+      <div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
+        <div className="divider-light" style={{ animationDelay: '0.5s' }} />
+      </div>
+
       {/* Grid bg */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-35" />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 50%, transparent 30%, #0A0A0D 100%)' }}
-        />
       </div>
+
+      {/* Drifting aurora blobs */}
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.08) 0%, transparent 65%)',
+          top: '20%',
+          right: '-15%',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift-rev"
+        style={{
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.06) 0%, transparent 65%)',
+          bottom: '15%',
+          left: '-10%',
+          animationDelay: '4s',
+        }}
+      />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '8%',  left: '10%', delay: '0s',   dur: '3s',   color: '#782CFF' },
+        { top: '18%', left: '88%', delay: '1.2s', dur: '2.8s', color: '#B18CFF' },
+        { top: '75%', left: '92%', delay: '0.6s', dur: '3.5s', color: '#782CFF' },
+        { top: '88%', left: '5%',  delay: '1.8s', dur: '4s',   color: '#B18CFF' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle-slow"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={s.color} opacity="0.6" />
+          </svg>
+        </div>
+      ))}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -196,10 +239,9 @@ export const Portfolio: React.FC = () => {
           {/* CTA */}
           <div className="mt-16 text-center">
             <div
-              className="rounded-2xl p-10 relative overflow-hidden"
+              className="rounded-2xl p-10 relative overflow-hidden border-conic-spin"
               style={{
                 background: '#14161C',
-                border: '1px solid rgba(120,44,255,0.2)',
               }}
             >
               <div

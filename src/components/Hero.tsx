@@ -103,19 +103,62 @@ export const Hero: React.FC = () => {
         }}
       />
 
-      {/* Ambient glow */}
+      {/* Drifting aurora blobs */}
       <div
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none animate-aurora-drift"
         style={{
-          width: 800,
-          height: 800,
+          width: 700,
+          height: 700,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.10) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.13) 0%, transparent 65%)',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
       />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift-rev"
+        style={{
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.08) 0%, transparent 65%)',
+          top: '20%',
+          right: '5%',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.07) 0%, transparent 65%)',
+          bottom: '10%',
+          left: '5%',
+          animationDelay: '4s',
+        }}
+      />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '12%', left: '8%',  delay: '0s',   dur: '3s' },
+        { top: '25%', left: '88%', delay: '0.8s', dur: '2.5s' },
+        { top: '65%', left: '92%', delay: '1.5s', dur: '3.5s' },
+        { top: '78%', left: '12%', delay: '0.3s', dur: '4s' },
+        { top: '42%', left: '3%',  delay: '2s',   dur: '3s' },
+        { top: '50%', left: '97%', delay: '1.2s', dur: '2.8s' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={i % 2 === 0 ? '#782CFF' : '#B18CFF'} opacity="0.8" />
+          </svg>
+        </div>
+      ))}
 
       {/* Rising particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

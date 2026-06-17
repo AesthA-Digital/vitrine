@@ -57,37 +57,49 @@ export const Services: React.FC = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{ background: '#0A0A0D' }}
+      className="py-24 relative overflow-hidden bg-mesh-lavender"
     >
-      {/* Top edge */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.4), rgba(177,140,255,0.4), transparent)' }}
-      />
+      {/* Top edge with traveling light */}
+      <div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
+        <div className="divider-light" />
+      </div>
 
       {/* Grid bg */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 100% 60% at 50% 0%, transparent 50%, #0A0A0D 100%)' }}
-        />
+        <div className="absolute inset-0 bg-grid opacity-35" />
       </div>
 
-      {/* Glow */}
+      {/* Drifting aurora blobs */}
       <div
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none animate-aurora-drift"
         style={{
           width: 600,
           height: 600,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.08) 0%, transparent 65%)',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
       />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '10%', left: '92%', delay: '0s',   dur: '2.8s', color: '#782CFF' },
+        { top: '85%', left: '3%',  delay: '1.4s', dur: '3.2s', color: '#B18CFF' },
+        { top: '55%', left: '97%', delay: '0.7s', dur: '4s',   color: '#782CFF' },
+        { top: '30%', left: '2%',  delay: '2.1s', dur: '3s',   color: '#B18CFF' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle-slow"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={s.color} opacity="0.6" />
+          </svg>
+        </div>
+      ))}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -190,11 +202,10 @@ export const Services: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom edge */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.3), transparent)' }}
-      />
+      {/* Bottom edge with traveling light */}
+      <div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.1)' }}>
+        <div className="divider-light" style={{ animationDelay: '2.5s' }} />
+      </div>
     </section>
   );
 };

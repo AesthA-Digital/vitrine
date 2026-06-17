@@ -106,22 +106,58 @@ const MarqueeRow: React.FC<{ techs: Tech[]; direction: 'left' | 'right' }> = ({ 
 export default function SkillsSection() {
   return (
     <section
-      className="py-20 relative overflow-hidden"
-      style={{ background: '#0A0A0D' }}
+      className="py-20 relative overflow-hidden bg-mesh-lavender"
     >
-      {/* Top edge */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.4), rgba(177,140,255,0.4), transparent)' }}
-      />
+      {/* Top edge with traveling light */}
+      <div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
+        <div className="divider-light" style={{ animationDelay: '1.5s' }} />
+      </div>
 
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-30" />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 50%, transparent 30%, #0A0A0D 100%)' }}
-        />
       </div>
+
+      {/* Drifting aurora blobs */}
+      <div
+        className="absolute pointer-events-none animate-aurora-drift-rev"
+        style={{
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.07) 0%, transparent 65%)',
+          top: '30%',
+          left: '-10%',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 380,
+          height: 380,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.05) 0%, transparent 65%)',
+          bottom: '10%',
+          right: '-8%',
+          animationDelay: '5s',
+        }}
+      />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '5%',  left: '8%',  delay: '0s',   dur: '3s',   color: '#782CFF' },
+        { top: '92%', left: '85%', delay: '1s',  dur: '2.8s', color: '#B18CFF' },
+        { top: '50%', left: '95%', delay: '0.4s', dur: '3.5s', color: '#782CFF' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle-slow"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={s.color} opacity="0.6" />
+          </svg>
+        </div>
+      ))}
 
       <div className="relative z-10">
         {/* Header */}
@@ -198,10 +234,9 @@ export default function SkillsSection() {
         {/* Bottom tagline */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
           <div
-            className="rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+            className="rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-conic-spin-dark"
             style={{
-              background: 'rgba(120,44,255,0.04)',
-              border: '1px solid rgba(120,44,255,0.12)',
+              background: '#0A0A0D',
             }}
           >
             <p style={{ color: '#8A8F9A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px' }}>

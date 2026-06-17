@@ -24,31 +24,56 @@ export const About: React.FC = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{ background: '#0A0A0D' }}
+      className="py-24 relative overflow-hidden bg-mesh-violet"
     >
       {/* Grid bg */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid opacity-40" />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 50%, transparent 40%, #0A0A0D 100%)' }}
-        />
+        <div className="absolute inset-0 bg-grid opacity-45" />
       </div>
 
-      {/* Ambient glow */}
+      {/* Drifting aurora blobs */}
       <div
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none animate-aurora-drift-rev"
         style={{
-          width: 500,
-          height: 500,
+          width: 600,
+          height: 600,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.09) 0%, transparent 65%)',
           top: '50%',
-          right: -120,
+          right: -180,
           transform: 'translateY(-50%)',
         }}
       />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 350,
+          height: 350,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.06) 0%, transparent 65%)',
+          bottom: '5%',
+          left: '5%',
+          animationDelay: '3s',
+        }}
+      />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '8%',  left: '5%',  delay: '0s',   dur: '3s',   color: '#782CFF' },
+        { top: '15%', left: '90%', delay: '1.2s', dur: '2.5s', color: '#B18CFF' },
+        { top: '80%', left: '88%', delay: '0.5s', dur: '3.5s', color: '#782CFF' },
+        { top: '90%', left: '15%', delay: '1.8s', dur: '4s',   color: '#B18CFF' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle-slow"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={s.color} opacity="0.7" />
+          </svg>
+        </div>
+      ))}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -153,13 +178,11 @@ export const About: React.FC = () => {
                   }}
                 />
 
-                {/* Card */}
+                {/* Card — spinning conic gradient border */}
                 <div
-                  className="relative w-72 rounded-2xl overflow-hidden"
+                  className="relative w-72 rounded-2xl overflow-hidden border-conic-spin"
                   style={{
-                    background: '#14161C',
-                    border: '1px solid rgba(120,44,255,0.2)',
-                    boxShadow: '0 0 50px rgba(120,44,255,0.1), inset 0 0 30px rgba(120,44,255,0.03)',
+                    boxShadow: '0 0 50px rgba(120,44,255,0.15), inset 0 0 30px rgba(120,44,255,0.04)',
                   }}
                 >
                   {/* Top gradient bar */}

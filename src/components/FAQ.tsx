@@ -45,22 +45,59 @@ export const FAQ: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{ background: '#0A0A0D' }}
+      className="py-24 relative overflow-hidden bg-mesh-violet"
     >
-      {/* Top edge */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(120,44,255,0.4), rgba(177,140,255,0.4), transparent)' }}
-      />
+      {/* Top edge with traveling light */}
+      <div className="absolute top-0 left-0 right-0 h-px overflow-hidden" style={{ background: 'rgba(120,44,255,0.12)' }}>
+        <div className="divider-light" style={{ animationDelay: '2s' }} />
+      </div>
 
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-25" />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, #0A0A0D 100%)' }}
-        />
       </div>
+
+      {/* Drifting aurora blobs */}
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 450,
+          height: 450,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.08) 0%, transparent 65%)',
+          top: '40%',
+          left: '-12%',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift-rev"
+        style={{
+          width: 350,
+          height: 350,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.06) 0%, transparent 65%)',
+          bottom: '10%',
+          right: '-8%',
+          animationDelay: '4s',
+        }}
+      />
+
+      {/* Sparkle dots */}
+      {[
+        { top: '6%',  left: '12%', delay: '0s',   dur: '3s',   color: '#782CFF' },
+        { top: '15%', left: '88%', delay: '1.1s', dur: '2.6s', color: '#B18CFF' },
+        { top: '82%', left: '92%', delay: '0.5s', dur: '3.3s', color: '#782CFF' },
+        { top: '90%', left: '8%',  delay: '1.7s', dur: '4s',   color: '#B18CFF' },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none animate-twinkle-slow"
+          style={{ top: s.top, left: s.left, animationDelay: s.delay, animationDuration: s.dur }}
+        >
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+            <path d="M5 0L5.8 4.2L10 5L5.8 5.8L5 10L4.2 5.8L0 5L4.2 4.2Z" fill={s.color} opacity="0.6" />
+          </svg>
+        </div>
+      ))}
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -145,10 +182,9 @@ export const FAQ: React.FC = () => {
 
           {/* Still have questions */}
           <div
-            className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
+            className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden border-conic-spin-dark"
             style={{
               background: '#0A0A0D',
-              border: '1px solid rgba(120,44,255,0.2)',
             }}
           >
             <div
