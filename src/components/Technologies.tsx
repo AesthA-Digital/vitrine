@@ -92,12 +92,17 @@ const TechPill: React.FC<{ tech: Tech }> = ({ tech }) => (
   </div>
 );
 
-const MarqueeRow: React.FC<{ techs: Tech[]; direction: 'left' | 'right' }> = ({ techs, direction }) => {
-  const doubled = [...techs, ...techs];
+const MarqueeRow: React.FC<{ techs: Tech[]; direction: 'left' | 'right'; speed?: number }> = ({ techs, direction, speed = 30 }) => {
+  // Quadruple to guarantee seamless coverage across any viewport
+  const items = [...techs, ...techs, ...techs, ...techs];
+  const duration = techs.length <= 5 ? 20 : speed;
   return (
     <div className="overflow-hidden py-2">
-      <div className={direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} style={{ display: 'flex', width: 'max-content' }}>
-        {doubled.map((tech, i) => (
+      <div
+        className={direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}
+        style={{ display: 'flex', width: 'max-content', animationDuration: `${duration}s` }}
+      >
+        {items.map((tech, i) => (
           <TechPill key={`${tech.name}-${i}`} tech={tech} />
         ))}
       </div>
@@ -233,9 +238,9 @@ export default function SkillsSection() {
           }}
         >
           <div className="space-y-3">
-            <MarqueeRow techs={row1} direction="left" />
-            <MarqueeRow techs={row2} direction="right" />
-            <MarqueeRow techs={row3} direction="left" />
+            <MarqueeRow techs={row1} direction="left" speed={28} />
+            <MarqueeRow techs={row2} direction="right" speed={32} />
+            <MarqueeRow techs={row3} speed={22} />
           </div>
         </div>
 
