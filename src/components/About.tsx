@@ -237,22 +237,7 @@ export const About: React.FC = () => {
                 </div>
 
                 {/* Floating shards */}
-                <div
-                  className="absolute pointer-events-none animate-float"
-                  style={{ top: -18, right: -22, animationDelay: '1s', animationDuration: '5s' }}
-                >
-                  <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
-                    <polygon points="20,2 38,35 2,35" fill="none" stroke="#782CFF" strokeWidth="1.5" opacity="0.5" />
-                  </svg>
-                </div>
-                <div
-                  className="absolute pointer-events-none animate-float"
-                  style={{ bottom: -14, left: -26, animationDelay: '2.2s', animationDuration: '6.5s' }}
-                >
-                  <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
-                    <polygon points="20,2 38,35 2,35" fill="none" stroke="#B18CFF" strokeWidth="1.5" opacity="0.4" />
-                  </svg>
-                </div>
+               
               </div>
             </div>
           </div>
