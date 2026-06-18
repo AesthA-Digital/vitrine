@@ -37,7 +37,7 @@ export const About: React.FC = () => {
       <div
         className="absolute pointer-events-none animate-aurora-drift-rev"
         style={{
-          width: 6000,
+          width: 600,
           height: 600,
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(120,44,255,0.09) 0%, transparent 65%)',
