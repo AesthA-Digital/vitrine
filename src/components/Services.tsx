@@ -84,18 +84,7 @@ export const Services: React.FC = () => {
       </div>
 
       {/* Drifting aurora blobs */}
-      <div
-        className="absolute pointer-events-none animate-aurora-drift"
-        style={{
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(120,44,255,0.08) 0%, transparent 65%)',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      />
+      
 
       {/* Sparkle dots */}
       {[
