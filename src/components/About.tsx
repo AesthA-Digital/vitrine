@@ -34,7 +34,30 @@ export const About: React.FC = () => {
       </div>
 
       {/* Drifting aurora blobs */}
-     
+      <div
+        className="absolute pointer-events-none animate-aurora-drift-rev"
+        style={{
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(120,44,255,0.09) 0%, transparent 65%)',
+          top: '50%',
+          right: -180,
+          transform: 'translateY(-50%)',
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-aurora-drift"
+        style={{
+          width: 350,
+          height: 350,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(177,140,255,0.06) 0%, transparent 65%)',
+          bottom: '5%',
+          left: '5%',
+          animationDelay: '3s',
+        }}
+      />
 
       {/* Sparkle dots */}
       {[
